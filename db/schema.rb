@@ -25,13 +25,11 @@ ActiveRecord::Schema.define(version: 20150417222554) do
 
   create_table "reports", force: :cascade do |t|
     t.string   "pet_name"
-    t.string   "photo_url"
     t.string   "coords"
     t.integer  "users_id"
-    t.string   "op_contact_info"
     t.string   "type"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|
