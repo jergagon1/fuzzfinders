@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'anon_reports#index'
 
-  resources :users do
+  resources :users, only: [:show] do
     resources :reports
   end
 
