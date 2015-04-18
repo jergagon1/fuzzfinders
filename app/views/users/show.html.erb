@@ -1,3 +1,2 @@
 <h2>in views/users/show.html.erb</h2>
-<%= link_to "Create Profile" %>
-<%= link_to "Report Missing Pet" %>
+<a href="/users/<%= params[:id] %>/reports/new">Report Missing Pet</a>

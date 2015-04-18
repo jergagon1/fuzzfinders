@@ -6,8 +6,8 @@ class RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :zipcode, :password, :password_confirmation)}
   end
 
-  def after_inactive_sign_up_path_for(resource)
+  # def after_inactive_sign_up_path_for(resource)
 
-  end
+  # end
 
 end

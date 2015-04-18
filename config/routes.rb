@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'anon_reports#index'
+  root 'users#index'
 
   resources :users, only: [:show] do
     resources :reports
   end
 
-  resources :anon_reports
+  # resources :anon_reports
 
   # get 'users/new' => 'users#new'
   # Example of regular route:
