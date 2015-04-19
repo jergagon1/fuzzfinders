@@ -1,1 +1,6 @@
 <h2>in views/reports/index.html.erb</h2>
+
+<% @reports.each do |report| %>
+<%= report.id %>
+<%= image_tag report.photo.url(:thumb) %>
+<% end %>

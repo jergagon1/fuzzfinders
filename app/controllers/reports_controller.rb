@@ -2,6 +2,12 @@ class ReportsController < ApplicationController
 
 
   def index
+    @reports = Report.all
+    # if params[:tag]
+    #   @reports = Report.tagged_with(params[:tag])
+    # else
+    #   @reports = Report.all
+    # end
   end
 
   def show
@@ -13,6 +19,11 @@ class ReportsController < ApplicationController
   end
 
   def edit
+  end
+
+  def add_tag
+    @report = Report.find(params[:id])
+    @report.tags << Tag.find_or_create_by(params[:tag])
   end
 
   def create
@@ -31,6 +42,6 @@ class ReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:report).permit(:photo)
+    params.require(:report).permit(:photo, :all_tags)
   end
 end

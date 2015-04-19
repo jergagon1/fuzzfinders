@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :reports
   end
 
+
   # resources :anon_reports
 
   # get 'users/new' => 'users#new'
