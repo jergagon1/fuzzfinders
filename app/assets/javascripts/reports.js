@@ -2,13 +2,12 @@ $(document).ready(function(){
 
   console.log("sup");
 
-  var map;
-
   function initialize() {
     var mapOptions = {
-      zoom: 6
+      zoom: 13
     };
-    map = new google.maps.Map(document.getElementById('map-canvas'),
+
+    var map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
 
     // Try HTML5 geolocation
@@ -16,13 +15,27 @@ $(document).ready(function(){
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = new google.maps.LatLng(position.coords.latitude,
                                          position.coords.longitude);
-
-        var infowindow = new google.maps.InfoWindow({
+        var content = "" + pos +"";
+        var marker = new google.maps.Marker({
           map: map,
           position: pos,
-          content: 'Location found using HTML5.'
+          icon: '/images/fuzzfinders_favicon.png',
+          draggable: true
+        });
+        var infoWindow = new google.maps.InfoWindow({
+          // map: map,
+          // position: pos,
+          content: content,
         });
 
+        google.maps.event.addListener(marker, 'click', function(){
+          infoWindow.open(map, marker)
+        });
+         google.maps.event.addListener(marker, 'dragend', function(){
+          content = ""+[this.getPosition().lat(),this.getPosition().lng()]+"";
+          infoWindow.setContent(content);
+          infoWindow.open(map, marker)
+        });
         map.setCenter(pos);
       }, function() {
         handleNoGeolocation(true);
@@ -51,5 +64,4 @@ $(document).ready(function(){
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
-
 });
