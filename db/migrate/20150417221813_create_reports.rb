@@ -3,8 +3,9 @@ class CreateReports < ActiveRecord::Migration
     create_table :reports do |t|
       t.string :pet_name
       t.string :coords
-      t.belongs_to :users
-      t.string :type
+      t.string :animal_type
+      t.belongs_to :user
+      t.string :report_type
       t.timestamps null: false
     end
 

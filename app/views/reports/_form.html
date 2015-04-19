@@ -1,8 +1,10 @@
-<%= form_for @report, :url => user_reports_path, :html => { :multipart => true } do |f| %>
+<%= form_for [@user, @report], :url => user_reports_path, :html => { :multipart => true } do |f| %>
 
     <%= f.file_field :photo %>
     <%= f.label :pet_name %>
     <%= f.text_field :pet_name %>
+    <%= f.select :animal_type, options_for_select(%w[Dog Cat Reptile Bird Rodent Other]) %>
+    <%= hidden_field_tag("report[report_type]", params[:report_type]) %>
 
     <%= f.text_field :all_tags, placeholder: "Tags separated by commas" %>
   <div id="map-canvas" style="width: 300px; height: 300px"></div>

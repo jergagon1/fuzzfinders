@@ -1,2 +1,12 @@
-<h2>views/users/index.html.erb</h2>
-<a href="/users/<%= current_user.id %>/reports/new">Report</a>
+<form action="/users/<%= current_user.id %>/reports/new">
+  <input type="hidden" name="report_type" value="lost">
+  <input type="submit" value="Lost a Pet">
+</form>
+
+<form action="/users/<%= current_user.id %>/reports/new">
+  <input type="hidden" name="report_type" value="found">
+  <input type="submit" value="Found a Pet">
+</form>
+
+<button><a href="#">Search</a>
+</button>
