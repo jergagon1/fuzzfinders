@@ -26,8 +26,8 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report = Report.create(report_params)
-    redirect_to "/users/#{current_user.id}/reports/#{@report.id}"
+    report = current_user.reports.create(report_params)
+    redirect_to "/users/#{current_user.id}/reports/#{report.id}"
 
     # respond_to do |format|
     #   if @report.save
@@ -41,6 +41,6 @@ class ReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:report).permit(:photo, :all_tags)
+    params.require(:report).permit(:photo, :all_tags, :pet_name, :report_type, :user_id, :coords, :animal_type)
   end
 end

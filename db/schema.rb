@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 20150417222554) do
   create_table "reports", force: :cascade do |t|
     t.string   "pet_name"
     t.string   "coords"
-    t.integer  "users_id"
-    t.string   "type"
+    t.string   "animal_type"
+    t.integer  "user_id"
+    t.string   "report_type"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "photo_file_name"

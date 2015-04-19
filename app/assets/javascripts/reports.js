@@ -1,6 +1,12 @@
 $(document).ready(function(){
 
   console.log("sup");
+  // grab call .ajax submit pass in url, type
+  // first create file and then create child
+  //
+
+  $()
+
 
   function initialize() {
     var mapOptions = {

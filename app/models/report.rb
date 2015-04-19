@@ -6,6 +6,7 @@ class Report < ActiveRecord::Base
 
   has_many :report_tags
   has_many :tags, through: :report_tags
+  belongs_to :user
 
   def all_tags=(names)
     self.tags = names.split(",").map do |name|
@@ -19,4 +20,5 @@ class Report < ActiveRecord::Base
   def self.tagged_with(name)
     Tag.find_by_name!(name).reports
   end
+
 end
