@@ -7,5 +7,7 @@ class CreateReports < ActiveRecord::Migration
       t.string :type
       t.timestamps null: false
     end
+
+      add_attachment :reports, :photo
   end
 end
