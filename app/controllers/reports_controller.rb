@@ -2,12 +2,11 @@ class ReportsController < ApplicationController
 
 
   def index
-    @reports = Report.all
-    # if params[:tag]
-    #   @reports = Report.tagged_with(params[:tag])
-    # else
-    #   @reports = Report.all
-    # end
+    if params[:tag]
+      @reports = Report.tagged_with(params[:tag])
+    else
+      @reports = Report.all
+    end
   end
 
   def show

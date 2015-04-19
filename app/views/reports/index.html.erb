@@ -1,6 +1,13 @@
 <h2>in views/reports/index.html.erb</h2>
 
 <% @reports.each do |report| %>
+
+<div><%= image_tag report.photo.url(:thumb) %></div>
+<br>
 <%= report.id %>
-<%= image_tag report.photo.url(:thumb) %>
+<span>Created <%= time_ago_in_words(report.created_at)%> ago </span>
+<br>
+TAGS:<%=raw tag_links(report.all_tags)%>
 <% end %>
+<br>
+<%= link_to 'home', root_path %>
