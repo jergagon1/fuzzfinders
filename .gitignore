@@ -12,6 +12,5 @@
 !/log/.keep
 /tmp
 
-/secrets.yml
 /public/system/reports/*
 /.env
