@@ -1,3 +1,8 @@
 
 <%= image_tag @report.photo.url(:medium) %>
 <%= image_tag @report.photo.url(:thumb) %>
+<span>Created <%= time_ago_in_words(@report.created_at)%> ago </span>
+<br>
+<%=raw @report.all_tags %>
+<br>
+<%= link_to 'Back', root_path %>

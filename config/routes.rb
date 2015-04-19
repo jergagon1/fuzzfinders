@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :reports
   end
+  get 'tags/:tag', to: 'reports#index', as: "tag"
+
 
   # resources :anon_reports
 

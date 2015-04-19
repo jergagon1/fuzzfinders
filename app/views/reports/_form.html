@@ -1,9 +1,27 @@
-<%= form_for @report, :url => user_reports_path, :html => { :multipart => true } do |form| %>
-    <%= form.file_field :photo %>
+<%= form_for @report, :url => user_reports_path, :html => { :multipart => true } do |f| %>
 
+    <%= f.file_field :photo %>
+    <%= f.label :pet_name %>
+    <%= f.text_field :pet_name %>
+
+    <%= f.text_field :all_tags, placeholder: "Tags separated by commas" %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>
 
+
+
+<!-- <form action='/users' method='post' role="form">
+  <div class="form-group">
+    <label for="inputUsername">Username</label>
+    <input type="text" name="user[username]" placeholder="e.g., joe" >
+  </div>
+  <div class="form-group">
+    <label for="inputPassword">Password</label>
+    <input type="password" name="user[password]" placeholder="6 or more characters"><br>
+    <button type="submit" name="submit" value="create" class="btn btn-primary btn-lg active">Create new Account</button>
+  </div>
+</form>
+ -->
