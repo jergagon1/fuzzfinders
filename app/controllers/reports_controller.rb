@@ -39,7 +39,7 @@ class ReportsController < ApplicationController
     #     format.json { render json: @report.errors, status: :unprocessable_entity }
     #   end
     # end
-    UserMailer.welcome_email(@user).deliver
+    # UserMailer.welcome_email(@user).deliver
 
   end
 
