@@ -5,6 +5,7 @@
 <%= report.id %>. <%= report.pet_name %> (<%= report.report_type %>) <br>
 <div><%= image_tag report.photo.url(:thumb) %></div>
 <br>
+Pet Type: <%= report.animal_type %><br>
 <span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
 <br>
 Posted by: <%= report.user.email %><br>
