@@ -1,8 +1,5 @@
 $(document).ready(function(){
 
-  console.log(content);
-
-
   var content;
 
   function initialize() {
@@ -10,15 +7,14 @@ $(document).ready(function(){
       zoom: 13
     };
 
-    var map = new google.maps.Map(document.getElementById('map-canvas'),
-        mapOptions);
+    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);    
 
     // Try HTML5 geolocation
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = new google.maps.LatLng(position.coords.latitude,
                                          position.coords.longitude);
-        content = "" + pos +"";
+        content = "" + [position.coords.latitude, position.coords.longitude] +"";
         var marker = new google.maps.Marker({
           map: map,
           position: pos,
@@ -35,7 +31,8 @@ $(document).ready(function(){
           infoWindow.open(map, marker)
         });
          google.maps.event.addListener(marker, 'dragend', function(){
-            content = ""+[this.getPosition().lat(),this.getPosition().lng()]+"";
+            lat = this.getPosition().lat()
+            lng = this.getPosition().lng()]
             infoWindow.setContent(content);
             infoWindow.open(map, marker)
         });
@@ -66,10 +63,27 @@ $(document).ready(function(){
     map.setCenter(options.position);
   }
 
+  var reportMap;
+  function initializeReport() {
+    var coords = $('#coords').text()
+    console.log(coords)
+    var reportMapOptions = {
+      zoom: 8,
+      center: new google.maps.LatLng(coords)
+    };
+  reportMap = new google.maps.Map(document.getElementById('report-map'),
+      reportMapOptions);
+  }
+
+  google.maps.event.addDomListener(window, 'load', initializeReport);
+
+
+
+
   google.maps.event.addDomListener(window, 'load', initialize);
 
   $(".set-location-form").on("submit", function(event){
-    event.preventDefault();
+    // event.preventDefault();
     // console.log("button clicked");
     var link = $(this).attr("action");
     // console.log(content);
@@ -77,11 +91,11 @@ $(document).ready(function(){
       url: link,
       type: "put",
       dataType: "JSON",
-      data: JSON.stringify({ coords: content }),
+      data: JSON.stringify({ lat: lat, lng: lng }),
       contentType: "application/json"
     })
     .done(function(response){
-      console.log(response);
+      console.log("response");
     })
   });
 
