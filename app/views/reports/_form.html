@@ -7,8 +7,7 @@
     <%= hidden_field_tag("report[report_type]", params[:report_type]) %>
 
     <%= f.text_field :all_tags, placeholder: "Tags separated by commas" %>
-  <div id="map-canvas" style="width: 300px; height: 300px"></div>
-  <div class="actions">
+
     <%= f.submit %>
   </div>
 <% end %>
