@@ -52,8 +52,10 @@ class ReportsController < ApplicationController
   def update
     @report = Report.find(params[:id])
     @report.update(report_params)
+
     # redirect_to "/"
     # p "test"
+
     # respond_to do |format|
     #   if @report.update(report_params)
     #     format.html { redirect_to :user_report_path, notice: 'Report was successfully updated.'}
@@ -81,6 +83,6 @@ class ReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:report).permit(:photo, :all_tags, :pet_name, :report_type, :user_id, :coords, :animal_type)
+    params.require(:report).permit(:photo, :all_tags, :pet_name, :report_type, :user_id, :lat, :lng, :animal_type)
   end
 end

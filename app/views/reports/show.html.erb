@@ -1,10 +1,12 @@
 <h2><%= @report.pet_name %></h2><br>
 <%= @report.report_type %><br>
 <%= image_tag @report.photo.url(:medium) %><br>
-Pet type: <%= @report.animal_type %>
+Pet type: <%= @report.animal_type %><br>
 <span>Created: <%= time_ago_in_words(@report.created_at)%> ago </span>
 <br>
 Tags: <%=raw tag_links(@report.all_tags) %>
 <br>
+<span id="coords"><%=@report.coords%></span><br>
+<div id="report-map" style="width: 300px; height: 300px"></div>
 <%= link_to 'Back', root_path %>
 <%= link_to 'Search Map', reports_map_path %>
