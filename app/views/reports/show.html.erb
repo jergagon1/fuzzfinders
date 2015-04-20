@@ -6,7 +6,11 @@ Pet type: <%= @report.animal_type %><br>
 <br>
 Tags: <%=raw tag_links(@report.all_tags) %>
 <br>
-<span id="coords"></span><br>
+
+<span id="lat" style="display:none"><%=@report.lat	%></span><br>
+<span id="lng" style="display:none"><%=@report.lng%></span><br>
+
 <div id="report-map" style="width: 300px; height: 300px"></div>
+
 <%= link_to 'Back', root_path %>
-<%= link_to 'Search Map', reports_map_path %>
+

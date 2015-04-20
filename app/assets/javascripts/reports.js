@@ -16,6 +16,7 @@ $(document).ready(function(){
                                          position.coords.longitude);
           lat = position.coords.latitude;
           lng = position.coords.longitude;
+
         var marker = new google.maps.Marker({
           map: map,
           position: pos,
@@ -67,11 +68,11 @@ $(document).ready(function(){
 
   var reportMap;
   function initializeReport() {
-    var coords = $('#coords').text()
-    console.log(coords)
+    var lat = $('#lat').text()
+    var lng = $('#lng').text()
     var reportMapOptions = {
-      zoom: 8,
-      center: new google.maps.LatLng(coords)
+      zoom: 13,
+      center: new google.maps.LatLng(lat, lng)
     };
   reportMap = new google.maps.Map(document.getElementById('report-map'),
       reportMapOptions);
