@@ -1,3 +1,11 @@
+<h2>Your submitted reports:</h2>
+<ul class="report-list">
+	<% @user_reports.each do |report|%>
+		<li><a href="/users/<%= current_user.id %>/reports/<%=report.id%>"><%= report.pet_name %></a>, (<%= report.report_type %>)</li>
+	<% end %>
+</ul>
+
+
 <form action="/users/<%= current_user.id %>/reports/new">
   <input type="hidden" name="report_type" value="lost">
   <input type="submit" value="Lost a Pet">
@@ -8,5 +16,4 @@
   <input type="submit" value="Found a Pet">
 </form>
 
-<button><a href="#">Search</a>
-</button>
+<button><a href="/reports">Search</a></button>
