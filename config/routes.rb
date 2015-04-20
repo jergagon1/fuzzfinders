@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :reports
   end
   get 'tags/:tag', to: 'reports#index', as: "tag"
+  get 'reports', to: 'reports#index'
 
 
   # resources :anon_reports

@@ -2,12 +2,13 @@
 
 <% @reports.each do |report| %>
 
+<%= report.id %>. <%= report.pet_name %> (<%= report.report_type %>) <br>
 <div><%= image_tag report.photo.url(:thumb) %></div>
 <br>
-<%= report.id %>
-<span>Created <%= time_ago_in_words(report.created_at)%> ago </span>
+<span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
 <br>
-TAGS:<%=raw tag_links(report.all_tags)%>
+Posted by: <%= report.user.email %><br>
+Tags: <%=raw tag_links(report.all_tags)%><br><br>
 <% end %>
 <br>
 <%= link_to 'home', root_path %>
