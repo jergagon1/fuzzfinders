@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   get 'tags/:tag', to: 'reports#index', as: "tag"
   get 'reports', to: 'reports#index'
-  get 'reports/map', to: 'reports#map'
+  # get 'reports/map', to: 'reports#map'
 
 
   # get 'map', to: 'reports#edit'

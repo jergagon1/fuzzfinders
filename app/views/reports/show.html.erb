@@ -7,6 +7,5 @@ Pet type: <%= @report.animal_type %><br>
 Tags: <%=raw tag_links(@report.all_tags) %>
 <br>
 <span id="coords"></span><br>
-<div id="report-map" style="width: 300px; height: 300px"></div>
+<div id="report-map" style="width: 300px; height: 300px" data-nearby-reports="<%= @nearby_reports.to_json %>"</div>
 <%= link_to 'Back', root_path %>
-<%= link_to 'Search Map', reports_map_path %>

@@ -11,6 +11,8 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+    @nearby_reports = find_nearby_reports
+    p @nearby_reports
   end
 
   def new
@@ -43,11 +45,11 @@ class ReportsController < ApplicationController
 
   end
 
-  def map
-    # pull latlong from user's info from session
-    @report = current_user.reports.last
-    @nearby_reports = { testkey: "Value"}
-  end
+  # def map
+  #   # pull latlong from user's info from session
+  #   @report = current_user.reports.last
+  #   @nearby_reports = { testkey: "Value"}
+  # end
 
   def update
     @report = Report.find(params[:id])
@@ -72,10 +74,8 @@ class ReportsController < ApplicationController
   private
 
   def find_nearby_reports
-    # get current report
-    # get current report coordinates
-    @reports = Report.within
-
+    @report = Report.find(params[:id])
+    Report.within(5, :origin => [@report.lat, @report.lng])
   end
 
   def set_report
