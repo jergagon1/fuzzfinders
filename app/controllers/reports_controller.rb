@@ -43,9 +43,19 @@ class ReportsController < ApplicationController
 
   end
 
+  def map
+    # pull latlong from user's info from session
+    @report = current_user.reports.last
+    @nearby_reports = { testkey: "Value"}
+  end
+
   def update
     @report = Report.find(params[:id])
     @report.update(report_params)
+
+    # redirect_to "/"
+    # p "test"
+
     # respond_to do |format|
     #   if @report.update(report_params)
     #     format.html { redirect_to :user_report_path, notice: 'Report was successfully updated.'}
@@ -60,6 +70,13 @@ class ReportsController < ApplicationController
   end
 
   private
+
+  def find_nearby_reports
+    # get current report
+    # get current report coordinates
+    @reports = Report.within
+
+  end
 
   def set_report
     @report = Report.find(params[:id])

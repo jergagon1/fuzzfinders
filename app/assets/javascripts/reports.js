@@ -1,13 +1,13 @@
 $(document).ready(function(){
 
-  var content;
 
+  var content;
   function initialize() {
     var mapOptions = {
       zoom: 13
     };
 
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);    
+    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     // Try HTML5 geolocation
     if(navigator.geolocation) {
