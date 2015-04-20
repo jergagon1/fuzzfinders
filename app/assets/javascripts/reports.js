@@ -1,10 +1,10 @@
 $(document).ready(function(){
 
-  console.log(content);
+  // console.log(content);
+
 
 
   var content;
-
   function initialize() {
     var mapOptions = {
       zoom: 13
@@ -69,7 +69,7 @@ $(document).ready(function(){
   google.maps.event.addDomListener(window, 'load', initialize);
 
   $(".set-location-form").on("submit", function(event){
-    event.preventDefault();
+    // event.preventDefault();
     // console.log("button clicked");
     var link = $(this).attr("action");
     // console.log(content);

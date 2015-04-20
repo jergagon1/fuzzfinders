@@ -25,7 +25,8 @@ ActiveRecord::Schema.define(version: 20150417222554) do
 
   create_table "reports", force: :cascade do |t|
     t.string   "pet_name"
-    t.string   "coords"
+    t.float    "lat"
+    t.float    "lng"
     t.string   "animal_type"
     t.integer  "user_id"
     t.string   "report_type"

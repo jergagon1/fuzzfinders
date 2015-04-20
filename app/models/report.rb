@@ -8,6 +8,8 @@ class Report < ActiveRecord::Base
   has_many :tags, through: :report_tags
   belongs_to :user
 
+  acts_as_mappable
+
   def all_tags=(names)
     self.tags = names.split(",").map do |name|
         Tag.where(name: name.strip).first_or_create!
