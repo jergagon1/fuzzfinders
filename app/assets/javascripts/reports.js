@@ -1,12 +1,9 @@
 $(document).ready(function(){
 
-  console.log("sup");
-  // grab call .ajax submit pass in url, type
-  // first create file and then create child
-  //
+  console.log(content);
 
-  $()
 
+  var content;
 
   function initialize() {
     var mapOptions = {
@@ -21,7 +18,7 @@ $(document).ready(function(){
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = new google.maps.LatLng(position.coords.latitude,
                                          position.coords.longitude);
-        var content = "" + pos +"";
+        content = "" + pos +"";
         var marker = new google.maps.Marker({
           map: map,
           position: pos,
@@ -38,9 +35,9 @@ $(document).ready(function(){
           infoWindow.open(map, marker)
         });
          google.maps.event.addListener(marker, 'dragend', function(){
-          content = ""+[this.getPosition().lat(),this.getPosition().lng()]+"";
-          infoWindow.setContent(content);
-          infoWindow.open(map, marker)
+            content = ""+[this.getPosition().lat(),this.getPosition().lng()]+"";
+            infoWindow.setContent(content);
+            infoWindow.open(map, marker)
         });
         map.setCenter(pos);
       }, function() {
@@ -70,4 +67,27 @@ $(document).ready(function(){
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
+
+  // $(".new_report").on("submit", function(event){
+  //   event.preventDefault();
+  //   console.log("button clicked");
+  //   var formData = $(this).serialize();
+  //   console.log(formData);
+  //   formData += "&report%5Bcoords%5D=" + content
+  //   // formData[]
+  //   console.log(formData);
+  //   var link = $(this).attr("action");
+  //   // var data = {animal_type: [animal_type]}
+  //   // console.log(data)
+  //   $.ajax({
+  //     url: link,
+  //     type: "post",
+  //     dataType: "JSON",
+  //     data: formData
+  //   })
+  //   .done(function(response){
+
+  //   })
+  // });
+
 });
