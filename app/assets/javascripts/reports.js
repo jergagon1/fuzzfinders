@@ -68,26 +68,21 @@ $(document).ready(function(){
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
-  // $(".new_report").on("submit", function(event){
-  //   event.preventDefault();
-  //   console.log("button clicked");
-  //   var formData = $(this).serialize();
-  //   console.log(formData);
-  //   formData += "&report%5Bcoords%5D=" + content
-  //   // formData[]
-  //   console.log(formData);
-  //   var link = $(this).attr("action");
-  //   // var data = {animal_type: [animal_type]}
-  //   // console.log(data)
-  //   $.ajax({
-  //     url: link,
-  //     type: "post",
-  //     dataType: "JSON",
-  //     data: formData
-  //   })
-  //   .done(function(response){
-
-  //   })
-  // });
+  $(".set-location-form").on("submit", function(event){
+    event.preventDefault();
+    // console.log("button clicked");
+    var link = $(this).attr("action");
+    // console.log(content);
+    $.ajax({
+      url: link,
+      type: "put",
+      dataType: "JSON",
+      data: JSON.stringify({ coords: content }),
+      contentType: "application/json"
+    })
+    .done(function(response){
+      console.log(response);
+    })
+  });
 
 });
