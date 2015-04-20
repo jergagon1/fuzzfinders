@@ -9,6 +9,7 @@ Tags: <%=raw tag_links(@report.all_tags) %>
 
 <span id="lat" style="display:none"><%=@report.lat %></span><br>
 <span id="lng" style="display:none"><%=@report.lng %></span><br>
+<span id="id" style="display:none"><%=@report.id %></span><br>
 
 <div id="report-map" style="width: 300px; height: 300px" data-nearby-reports="<%= @nearby_reports.to_json %>"></div>
 
