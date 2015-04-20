@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
+gem 'mandrill-api', '~> 1.0.53', require: "mandrill"
 # Paperclip is for file upload
 gem "paperclip", "~> 4.2"
 gem 'fog'
