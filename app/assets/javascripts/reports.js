@@ -14,25 +14,27 @@ $(document).ready(function(){
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = new google.maps.LatLng(position.coords.latitude,
                                          position.coords.longitude);
-        content = "" + [position.coords.latitude, position.coords.longitude] +"";
+          lat = position.coords.latitude;
+          lng = position.coords.longitude;
         var marker = new google.maps.Marker({
           map: map,
           position: pos,
           icon: '/images/fuzzfinders_favicon.png',
           draggable: true
         });
-        var infoWindow = new google.maps.InfoWindow({
-          // map: map,
-          // position: pos,
-          content: content,
-        });
+        // Currently shows coords at drag end
+        // var infoWindow = new google.maps.InfoWindow({
+        //   // map: map,
+        //   // position: pos,
+        //   content: content,
+        // });
 
         google.maps.event.addListener(marker, 'click', function(){
           infoWindow.open(map, marker)
         });
          google.maps.event.addListener(marker, 'dragend', function(){
-            lat = this.getPosition().lat()
-            lng = this.getPosition().lng()]
+            lat = this.getPosition().lat();
+            lng = this.getPosition().lng();
             infoWindow.setContent(content);
             infoWindow.open(map, marker)
         });
