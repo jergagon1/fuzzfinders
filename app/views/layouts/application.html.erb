@@ -16,6 +16,11 @@
       <% end %>
   </head>
   <body>
+   <div id="amber-alert" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+    <ul id="alert-message"></ul>
+<!--     <input id="send"/>
+    <button id="fire">Send</button> -->
+  </div>
     <h1>FuzzFinders</h1>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

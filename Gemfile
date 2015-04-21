@@ -33,6 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'geokit-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem 'websocket-rails'
+gem 'thin'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -46,6 +48,8 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 
   gem 'dotenv-rails'
 end
