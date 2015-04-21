@@ -1,0 +1,113 @@
+/*========DESKTOP STYLES========*/
+
+
+
+
+
+
+/*========MOBILE STYLES========*/
+
+/*Avoid explicit absolute widths – where possible you should use percentage widths.
+
+Linearise everything – where possible, remove all floats. We want no content side-by-side unnecessarily.*/
+
+
+/* media query for iPhone 2G-4S in portrait & landscape */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+
+  .navbar-text {
+    display: block;
+    margin:0 auto;
+  }
+
+  .email-field {
+    width: 30%;
+  }
+
+/*.sign-in-containter {
+  background-image: url("/images/dog-273526_640.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  }*/
+
+  .pw-field {
+    width: 30%;
+  }
+
+  #user_remember_me {
+    /*how to size this muuhfuukah???*/
+  }
+
+/*  .landing-background {
+    position: fixed;
+    left: 0;
+    right: 0;
+    display: block;
+    background-image: url("/images/dog-273526_640.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: 1;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+  }*/
+
+
+  .sign-up-view {
+    width: 100%;
+    background-color: white;
+  }
+
+
+  .app-header {
+    margin:0 auto;
+    width:750px;
+    color: #E65C00;
+  }
+
+  .nav-signup-link {
+    float: left;
+    text-decoration: none;
+  }
+
+  .nav-login-link {
+    float: right;
+    text-decoration: none;
+  }
+
+  .fuzz-logo {
+    height: 6em;
+    width: 9em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+  }
+
+  body {
+    /* re-sizes text for you */
+    /*-webkit-text-size-adjust:auto;*/
+    /* Helvetica looks terrible on pc, good on iphone */
+    font-family:Helvetica, Arial, Verdana, sans-serif;
+    /* padding so nothing touches edge of iphone screen*/
+    padding:5px; 
+    font-size: 4em;
+
+    /*code below linearizes content by forcing all divs to rest one on top of the other, full width and in order. You have begun linearising all your content.*/
+  }
+
+  div{
+    clear:both!important;
+    display:block!important;
+    width:100%!important;
+    float:none!important;
+    margin:0!important;
+    padding:0!important;
+  }  
+}
+
