@@ -12,7 +12,12 @@ class ReportsController < ApplicationController
   def show
     @report = Report.find(params[:id])
     @nearby_reports = find_nearby_reports
-    p @nearby_reports
+    @nearby_photos = []
+    @nearby_tags = []
+    @nearby_reports.each do |report|
+      @nearby_photos << report.photo.url
+      @nearby_tags << report.tags
+    end
   end
 
   def new
