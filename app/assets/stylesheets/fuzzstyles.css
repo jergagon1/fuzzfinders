@@ -17,13 +17,34 @@ Linearise everything – where possible, remove all floats. We want no content s
 and (min-device-width : 320px) 
 and (max-device-width : 480px) {
 
-  .navbar-text {
+
+  body {
+    /*bootstrap doesn't */
+    padding-top: 0.5em;
+  }
+  .navbar-container {
     display: block;
-    margin:0 auto;
+    width: 100%;
   }
 
-  .email-field {
-    width: 30%;
+  .nav-signup-link {
+    font-size: 1em;
+    background-color: #E65C00;
+    /*want to position these*/
+  }
+
+  .nav-login-link {
+    font-size: 1em;
+    background-color: #E65C00;
+  }
+
+
+  .fuzz-logo {
+    height: 10em;
+    width: 15em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
   }
 
 /*.sign-in-containter {
@@ -32,13 +53,27 @@ and (max-device-width : 480px) {
   background-size: cover;
   }*/
 
+  .login-header {
+    font-size: 1em;
+  }
+
+  .email-field {
+    width: 60%;
+    margin: 0.5em;
+    padding: 0.5em;
+  }
+
   .pw-field {
-    width: 30%;
+    width: 60%;
+    margin: 0.5em;
+    padding: 0.5em;
   }
 
   #user_remember_me {
     /*how to size this muuhfuukah???*/
   }
+
+  
 
 /*  .landing-background {
     position: fixed;
@@ -49,6 +84,10 @@ and (max-device-width : 480px) {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+  .bottom-login-button {
+    font-size: 1em;
+    background-color: #E65C00;
+  }
     opacity: 0.5;
     z-index: 1;
     -webkit-filter: blur(5px);
@@ -56,58 +95,47 @@ and (max-device-width : 480px) {
     -o-filter: blur(5px);
     -ms-filter: blur(5px);
     filter: blur(5px);
-  }*/
+    }*/
 
 
-  .sign-up-view {
-    width: 100%;
-    background-color: white;
+    .sign-up-view {
+      width: 100%;
+      background-color: white;
+    }
+
+    .app-header {
+      margin:0 auto;
+      width:750px;
+      color: #E65C00;
+    }
+
+
+
+
+   /* body {*/
+      /* re-sizes text for you */
+      /*-webkit-text-size-adjust:auto;*/
+      /* Helvetica looks terrible on pc, good on iphone */
+     /* font-family:Helvetica, Arial, Verdana, sans-serif;*/
+      /* padding so nothing touches edge of iphone screen*/
+     /* padding:15px; 
+      font-size: 4em;
+*/
+  /*  }*/
+
   }
 
 
-  .app-header {
-    margin:0 auto;
-    width:750px;
-    color: #E65C00;
-  }
 
-  .nav-signup-link {
-    float: left;
-    text-decoration: none;
-  }
 
-  .nav-login-link {
-    float: right;
-    text-decoration: none;
-  }
 
-  .fuzz-logo {
-    height: 6em;
-    width: 9em;
-    display: block;
-    margin-left: auto;
-    margin-right: auto; 
-  }
+/*recommanded for divs:
 
-  body {
-    /* re-sizes text for you */
-    /*-webkit-text-size-adjust:auto;*/
-    /* Helvetica looks terrible on pc, good on iphone */
-    font-family:Helvetica, Arial, Verdana, sans-serif;
-    /* padding so nothing touches edge of iphone screen*/
-    padding:5px; 
-    font-size: 4em;
-
-    /*code below linearizes content by forcing all divs to rest one on top of the other, full width and in order. You have begun linearising all your content.*/
-  }
-
-  div{
-    clear:both!important;
-    display:block!important;
-    width:100%!important;
-    float:none!important;
-    margin:0!important;
-    padding:0!important;
-  }  
-}
-
+    div{
+        clear:both!important;
+        display:block!important;
+        width:100%!important;
+        float:none!important;
+        margin:0!important;
+        padding:0!important;
+        }*/
