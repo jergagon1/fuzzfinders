@@ -1,9 +1,27 @@
 /*========DESKTOP STYLES========*/
 
 
+.btn-orange {
+  background-color: #E65C00;
+  border-color: #E65C00;
+}
 
+.login-container {
+  width: 80%; 
+  margin: 1em auto;"
+}
 
+.field {
+  margin: 1.5em auto;
+}
 
+.sign-up-top {
+  float: left;
+}
+
+.log-in-top {
+  float: right;
+}
 
 /*========MOBILE STYLES========*/
 
@@ -19,29 +37,14 @@ and (max-device-width : 480px) {
 
 
   body {
-    /*bootstrap doesn't */
+    /*bootstrap doesn't give you top padding so we want this for the phone */
     padding-top: 0.5em;
-  }
-  .navbar-container {
-    display: block;
-    width: 100%;
-  }
-
-  .nav-signup-link {
-    font-size: 1em;
-    background-color: #E65C00;
-    /*want to position these*/
-  }
-
-  .nav-login-link {
-    font-size: 1em;
-    background-color: #E65C00;
   }
 
 
   .fuzz-logo {
-    height: 10em;
-    width: 15em;
+    height: 9em;
+    width: 14em;
     display: block;
     margin-left: auto;
     margin-right: auto; 
@@ -53,27 +56,7 @@ and (max-device-width : 480px) {
   background-size: cover;
   }*/
 
-  .login-header {
-    font-size: 1em;
-  }
 
-  .email-field {
-    width: 60%;
-    margin: 0.5em;
-    padding: 0.5em;
-  }
-
-  .pw-field {
-    width: 60%;
-    margin: 0.5em;
-    padding: 0.5em;
-  }
-
-  #user_remember_me {
-    /*how to size this muuhfuukah???*/
-  }
-
-  
 
 /*  .landing-background {
     position: fixed;
@@ -112,18 +95,18 @@ and (max-device-width : 480px) {
 
 
 
-   /* body {*/
+    /* body {*/
       /* re-sizes text for you */
       /*-webkit-text-size-adjust:auto;*/
       /* Helvetica looks terrible on pc, good on iphone */
-     /* font-family:Helvetica, Arial, Verdana, sans-serif;*/
+      /* font-family:Helvetica, Arial, Verdana, sans-serif;*/
       /* padding so nothing touches edge of iphone screen*/
      /* padding:15px; 
       font-size: 4em;
-*/
-  /*  }*/
+      */
+      /*  }*/
 
-  }
+    }
 
 
 
