@@ -99,5 +99,5 @@ this.Lost = (function() {
 })();
 
 $(document).ready(function() {
-  return window.Lost = new Lost;
+  return window.lost = new Lost;
 });

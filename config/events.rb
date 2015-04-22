@@ -15,7 +15,6 @@ WebsocketRails::EventMap.describe do
   subscribe :client_connected, :to => ChatController, :with_method => :user_connected
   subscribe :new_message, :to => ChatController, :with_method => :incoming_message
   subscribe :set_name, :to => ChatController, :with_method => :set_name
-
   subscribe :amber_alert, to: SocketsController, with_method: :amber_alert
   # subscribe :amber_alert, to: ChatController, with_method: :amber_alert
 end
