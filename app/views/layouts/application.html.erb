@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Fuzzfinders</title>
+  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-  <meta name="viewport" content="initial-scale=1, user-scalable=no">
+  <!-- this viewport meta tag scales the rendering of the dom objects for mobile -->
+  <meta name="viewport" content="initial-scale=1">
 
 </head>
+
 <body>
-<div class="container">
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-info' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-info'  %>
-    <% else %>
-      <%= link_to "Sign Up", new_user_registration_path, :class => 'btn btn-info'  %>
-      <%= link_to "Log In", new_user_session_path, :class => 'btn btn-primary'  %>
-    <% end %>
+  <div class="container">
+ 
+      <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-info' %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-info'  %>
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, :class => 'sign-up-top btn btn-info btn-orange'  %>
+        <%= link_to "Log In", new_user_session_path, :class => 'log-in-top btn btn-primary btn-orange'  %>
+      <% end %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
     <%= yield %>
- </div> 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
+  </div> 
 
-  </body>
-  </html>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
+
+</body>
+</html>
