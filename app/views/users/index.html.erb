@@ -1,8 +1,15 @@
+
+
 <div class="container">
+  <button class="btn btn-primary btn-orange" type="button">
+    Your Wags <span class="badge"><%= current_user.wag %></span>
+  </button>
   <h3>Your Pet Reports:</h3>
   <div class="report-list">
   	<% @user_reports.each do |report|%>
-  		<p class="list-group-item list-group-item-info"><a href="/users/<%= current_user.id %>/reports/<%=report.id%>"><%= report.pet_name %></a>, (<%= report.report_type %>)</p>
+      <form  action="/users/<%= current_user.id %>/reports/<%=report.id%>">
+  		  <input class="list-group-item list-group-item-info pet-report-list-items" type="submit" value="<%= report.pet_name %>, (<%= report.report_type %>)">
+      </form>
   	<% end %>
   </div>
 

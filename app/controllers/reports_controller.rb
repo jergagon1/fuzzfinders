@@ -52,6 +52,10 @@ class ReportsController < ApplicationController
 
   def create
     report = current_user.reports.create(report_params)
+    if report.report_type == "found"
+      current_user.wag += 1
+      current_user.save
+    end
     redirect_to "/users/#{current_user.id}/reports/#{report.id}/edit"
     # respond_to do |format|
     #   if @report.save
