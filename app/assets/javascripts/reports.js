@@ -1,4 +1,5 @@
 var posted = false;
+var filter = "all";
 $(document).ready(function(){
   var dispatcher = new WebSocketRails($('#amber-alert').data('uri'), true)
   function send(message) {
@@ -85,7 +86,7 @@ $(document).ready(function(){
     var places = $('#report-map').data().nearbyReports;
 
     for (var i = 0; i < places.length; i++) {
-      placeMarker(places[i],photoUrls[i],tags[i]);
+      placeMarker(places[i],photoUrls[i],tags[i], filter);
     };
   };
 
@@ -106,7 +107,24 @@ $(document).ready(function(){
           send("New " + response.report_type + " pet report! <a href='" + this.url +"'>"+ response.pet_name+"</a>" );
       });
   });
-    function placeMarker(place, photoUrl, tags) {
+
+  $('#all').on("click", function(event){
+    event.preventDefault();
+    filter = "all";
+    initializeReport();
+  });
+  $('#lost').on("click", function(event){
+    event.preventDefault();
+    filter = "lost";
+    initializeReport();
+  });
+  $('#found').on("click", function(event){
+    event.preventDefault();
+    filter = "found";
+    initializeReport();
+  });
+
+    function placeMarker(place, photoUrl, tags, filter) {
       var mlat = place.lat;
       var mlng = place.lng;
       var mtype = place.report_type;
@@ -124,7 +142,7 @@ $(document).ready(function(){
             icon = '/images/FuzzFinders_icon_blue.png'
           };
 
-      if (mid != $('#report-map').data().id) {
+      if (mid != $('#report-map').data().id && (mtype === filter) || filter === "all") {
         var newMarker = new google.maps.Marker({
           position: new google.maps.LatLng(mlat, mlng),
           map: reportMap,
@@ -137,7 +155,7 @@ $(document).ready(function(){
         });
         google.maps.event.addListener(newMarker, "click", function(){
           newMarker.info.open(reportMap, newMarker)
-        })
+        });
       };
-    }
-});
+    };
+  })

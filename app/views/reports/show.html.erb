@@ -8,5 +8,6 @@ Tags: <%=raw tag_links(@report.all_tags) %>
 <br>
 
 <div id="report-map" style="width: 300px; height: 300px" data-nearby-reports="<%= @nearby_reports.to_json %>" data-lat="<%= @report.lat %>" data-lng="<%=@report.lng %>" data-id="<%=@report.id %>" data-photo-urls="<%=@nearby_photos.to_json %>" data-tags="<%= @nearby_tags.to_json %>"></div>
+<div class="map-filters"><button id="all">All</button><button id="lost">Lost</button><button id="found">Found</button></div>
 
 <%= link_to 'Back', root_path %>
