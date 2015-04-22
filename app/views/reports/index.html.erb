@@ -9,7 +9,7 @@
 Pet Type: <%= report.animal_type %><br>
 <span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
 <br>
-Posted by: <%= report.user.email %><br>
+Posted by: <%= report.user.username %><br>
 Tags: <%=raw tag_links(report.all_tags)%><br><br>
 <% end %>
 <br>

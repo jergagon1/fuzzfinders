@@ -1,9 +1,14 @@
 /*========DESKTOP STYLES========*/
 
+.pet-report-list-items {
+  width: 95%;
+  text-align: left;
+  margin: 0 auto;
+}
 
 .btn-orange {
-  background-color: #E65C00;
-  border-color: #E65C00;
+  background-color: #F36F56;
+  border-color: #F36F56;
 }
 
 .lost-button {
