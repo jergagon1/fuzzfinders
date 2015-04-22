@@ -1,4 +1,8 @@
-<form class="set-location-form" action="/users/<%= current_user.id %>/reports/<%= @report.id %>">
-  <div id="map-canvas" style="width: 300px; height: 300px"></div>
+<form class="set-location-form" action="/users/<%= current_user.id %>/reports/<%= @report.id %>/">
+<!--   <input type="hidden" name="_method" value="put"> -->
+  <div id="map-canvas" style="width: 300px; height: 300px" data-report-type="<%= @report.report_type %>" data-pet-name="<%= @report.pet_name %>"></div>
   <input type="submit" value="Set Location">
+</form>
+<form class="report-show" action="/users/<%= current_user.id %>/reports/<%= @report.id %>">
+  <input type="submit" value="View Report">
 </form>

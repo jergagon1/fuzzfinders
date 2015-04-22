@@ -1,7 +1,9 @@
+<div id="report-map" style="width: 500px; height: 500px" data-nearby-reports="<%= @reports.to_json %>" data-lat="<%= @lat %>" data-lng="<%=@lng %>" data-photo-urls="<%=@photos.to_json %>" data-tags="<%= @tags.to_json %>"></div>
+<div class="map-filters"><button id="all">All</button><button id="lost">Lost</button><button id="found">Found</button></div>
 
 <% @reports.each do |report| %>
 
-<%= report.id %>. <%= report.pet_name %> (<%= report.report_type %>) <br>
+<%= report.id %>. <a href="/users/<%=report.user_id %>/reports/<%=report.id%>"><%= report.pet_name %> </a>(<%= report.report_type %>) <br>
 <div><%= image_tag report.photo.url(:thumb) %></div>
 <br>
 Pet Type: <%= report.animal_type %><br>

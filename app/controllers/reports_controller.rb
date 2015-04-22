@@ -1,11 +1,28 @@
 class ReportsController < ApplicationController
+  include Geokit::Geocoders
   before_action :set_report, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:tag]
       @reports = Report.tagged_with(params[:tag])
+      @lat = GoogleGeocoder.geocode(current_user.zipcode).lat
+      @lng = GoogleGeocoder.geocode(current_user.zipcode).lng
+      @photos = []
+      @tags = []
+      @reports.each do |report|
+        @photos << report.photo.url
+        @tags << report.tags
+      end
     else
-      @reports = Report.all
+      @reports = Report.within(10, :origin => "#{current_user.zipcode}")
+      @photos = []
+      @tags = []
+      @lat = GoogleGeocoder.geocode(current_user.zipcode).lat
+      @lng = GoogleGeocoder.geocode(current_user.zipcode).lng
+      @reports.each do |report|
+        @photos << report.photo.url
+        @tags << report.tags
+      end
     end
   end
 
@@ -36,7 +53,6 @@ class ReportsController < ApplicationController
   def create
     report = current_user.reports.create(report_params)
     redirect_to "/users/#{current_user.id}/reports/#{report.id}/edit"
-
     # respond_to do |format|
     #   if @report.save
     #     format.html { redirect_to @report, notice: 'Report was successfully created.' }
@@ -50,16 +66,12 @@ class ReportsController < ApplicationController
 
   end
 
-  # def map
-  #   # pull latlong from user's info from session
-  #   @report = current_user.reports.last
-  #   @nearby_reports = { testkey: "Value"}
-  # end
-
   def update
     @report = Report.find(params[:id])
     @report.update(report_params)
 
+    render json: @report
+    # redirect_to "/users/#{current_user.id}/reports/#{@report.id}"
     # redirect_to "/"
     # p "test"
 
