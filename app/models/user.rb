@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  after_initialize :defaults
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,4 +11,8 @@ class User < ActiveRecord::Base
 #   def send_notification
 #     UserMailer.new_user(self).deliver
 #   end
+  def defaults
+    self.wag ||= 0
+  end
+
 end
