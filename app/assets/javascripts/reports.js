@@ -1,12 +1,15 @@
+var posted = false;
 $(document).ready(function(){
   var dispatcher = new WebSocketRails($('#amber-alert').data('uri'), true)
   function send(message) {
     dispatcher.trigger('amber_alert', message);
   }
   dispatcher.bind('amber_alert', function(data) {
-    console.log("in message function");
-    document.querySelector('#alert-message').innerHTML += "<li>" + data + "</li>";
-    })
+    if ( posted === false) {
+      posted = true;
+      document.querySelector('#alert-message').innerHTML += "<li>" + data + "</li>";
+    }    
+  })
   var content;
   function initialize() {
     var mapOptions = {
@@ -91,9 +94,7 @@ $(document).ready(function(){
 
   $(".set-location-form").on("submit", function(event){
     event.preventDefault();
-    // console.log("button clicked");
     var link = $(this).attr("action");
-    // console.log(content);
     $.ajax({
       url: link,
       type: "put",
@@ -102,8 +103,7 @@ $(document).ready(function(){
       contentType: "application/json"
     })
     .done(function(response){
-        // Here we instantiate a new WebSocketRails instance
-        send("new report!");
+          send("New " + response.report_type + " pet report! <a href='" + this.url +"'>"+ response.pet_name+"</a>" );
       });
   });
     function placeMarker(place, photoUrl, tags) {
