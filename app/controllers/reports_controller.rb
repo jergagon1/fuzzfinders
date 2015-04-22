@@ -1,11 +1,28 @@
 class ReportsController < ApplicationController
+  include Geokit::Geocoders
   before_action :set_report, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:tag]
       @reports = Report.tagged_with(params[:tag])
+      @lat = GoogleGeocoder.geocode(current_user.zipcode).lat
+      @lng = GoogleGeocoder.geocode(current_user.zipcode).lng
+      @photos = []
+      @tags = []
+      @reports.each do |report|
+        @photos << report.photo.url
+        @tags << report.tags
+      end
     else
-      @reports = Report.all
+      @reports = Report.within(10, :origin => "#{current_user.zipcode}")
+      @photos = []
+      @tags = []
+      @lat = GoogleGeocoder.geocode(current_user.zipcode).lat
+      @lng = GoogleGeocoder.geocode(current_user.zipcode).lng
+      @reports.each do |report|
+        @photos << report.photo.url
+        @tags << report.tags
+      end
     end
   end
 
