@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          has_many :reports
 
-after_create :send_notification
+# after_create :send_notification
 
-  def send_notification
-    UserMailer.new_user(self).deliver
-  end
+#   def send_notification
+#     UserMailer.new_user(self).deliver
+#   end
 end
