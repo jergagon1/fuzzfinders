@@ -20,11 +20,8 @@ WebsocketRails.setup do |config|
   # Change to true to enable channel synchronization between
   # multiple server instances.
   # * Requires Redis.
-<<<<<<< HEAD
-  config.synchronize = true
-=======
   config.synchronize = false
->>>>>>> c15b25ea638201bb99de6b99fbbf98ff051d2ef4
+
 
   # Prevent Thin from daemonizing (default is true)
   # config.daemonize = false
@@ -41,11 +38,8 @@ WebsocketRails.setup do |config|
   # config.keep_subscribers_when_private = false
 
   # Set to true if you wish to broadcast channel subscriber_join and
-<<<<<<< HEAD
+
   # subscriber_part events. All subscribers of a channel will be
-=======
-  # subscriber_part events. All subscribers of a channel will be 
->>>>>>> c15b25ea638201bb99de6b99fbbf98ff051d2ef4
   # notified when other clients join and part the channel. If you are
   # using the UserManager, the current_user object will be sent along
   # with the event.
