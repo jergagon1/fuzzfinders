@@ -76,12 +76,42 @@ $(document).ready(function(){
   function initializeReport() {
     var lat = $('#lat').text()
     var lng = $('#lng').text()
+    var id = $('#id').text()
+
     var reportMapOptions = {
       zoom: 13,
       center: new google.maps.LatLng(lat, lng)
     };
-  reportMap = new google.maps.Map(document.getElementById('report-map'),
-      reportMapOptions);
+
+    reportMap = new google.maps.Map(document.getElementById('report-map'), reportMapOptions);
+
+    var currentMarker = new google.maps.Marker({
+      position: new google.maps.LatLng(lat, lng),
+      map: reportMap,
+      title: "Your Report Location",
+    })
+
+    for (var i = 0; i < $('#report-map').data().nearbyReports.length; i++) {
+      var mlat = $('#report-map').data().nearbyReports[i].lat;
+      var mlng = $('#report-map').data().nearbyReports[i].lng;
+      var mtype = $('#report-map').data().nearbyReports[i].report_type;
+      var mname = $('#report-map').data().nearbyReports[i].pet_name;
+      var mid = $('#report-map').data().nearbyReports[i].id
+      if (mtype === "lost") {
+            icon = '/images/fuzzfinders_favicon.png'
+          } else if (mtype === "found") {
+            icon = '/images/FuzzFinders_icon_blue.png'
+          };
+
+      if (mid != id) {
+        var newMarker = new google.maps.Marker({
+          position: new google.maps.LatLng(mlat, mlng),
+          map: reportMap,
+          title: mname,
+          icon: icon
+        });
+      };
+    };
   }
 
   google.maps.event.addDomListener(window, 'load', initializeReport);
