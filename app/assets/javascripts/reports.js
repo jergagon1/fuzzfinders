@@ -29,21 +29,10 @@ $(document).ready(function(){
           icon: '/images/fuzzfinders_favicon.png',
           draggable: true
         });
-        // Currently shows coords at drag end
-        // var infoWindow = new google.maps.InfoWindow({
-        //   // map: map,
-        //   // position: pos,
-        //   content: content,
-        // });
 
-        google.maps.event.addListener(marker, 'click', function(){
-          infoWindow.open(map, marker)
-        });
          google.maps.event.addListener(marker, 'dragend', function(){
             lat = this.getPosition().lat();
             lng = this.getPosition().lng();
-            infoWindow.setContent(content);
-            infoWindow.open(map, marker)
         });
         map.setCenter(pos);
       }, function() {
@@ -64,19 +53,18 @@ $(document).ready(function(){
 
     var options = {
       map: map,
-      position: new google.maps.LatLng(60, 105),
+      position: new google.maps.LatLng(37.7848676, -122.3978871),
       content: content
     };
-
-    var infowindow = new google.maps.InfoWindow(options);
-    map.setCenter(options.position);
   }
 
   var reportMap;
   function initializeReport() {
-    var lat = $('#lat').text()
-    var lng = $('#lng').text()
-    var id = $('#id').text()
+    var lat = $('#report-map').data().lat
+    var lng = $('#report-map').data().lng
+    var id = $('#report-map').data().id
+    var photoUrls = $('#report-map').data().photoUrls
+    var tags = $('#report-map').data().tags
 
     var reportMapOptions = {
       zoom: 13,
@@ -91,28 +79,12 @@ $(document).ready(function(){
       title: "Your Report Location",
     })
 
-    for (var i = 0; i < $('#report-map').data().nearbyReports.length; i++) {
-      var mlat = $('#report-map').data().nearbyReports[i].lat;
-      var mlng = $('#report-map').data().nearbyReports[i].lng;
-      var mtype = $('#report-map').data().nearbyReports[i].report_type;
-      var mname = $('#report-map').data().nearbyReports[i].pet_name;
-      var mid = $('#report-map').data().nearbyReports[i].id
-      if (mtype === "lost") {
-            icon = '/images/fuzzfinders_favicon.png'
-          } else if (mtype === "found") {
-            icon = '/images/FuzzFinders_icon_blue.png'
-          };
+    var places = $('#report-map').data().nearbyReports;
 
-      if (mid != id) {
-        var newMarker = new google.maps.Marker({
-          position: new google.maps.LatLng(mlat, mlng),
-          map: reportMap,
-          title: mname,
-          icon: icon
-        });
-      };
+    for (var i = 0; i < places.length; i++) {
+      placeMarker(places[i],photoUrls[i],tags[i]);
     };
-  }
+  };
 
   google.maps.event.addDomListener(window, 'load', initializeReport);
   google.maps.event.addDomListener(window, 'load', initialize);
@@ -134,4 +106,38 @@ $(document).ready(function(){
         send("new report!");
       });
   });
+    function placeMarker(place, photoUrl, tags) {
+      var mlat = place.lat;
+      var mlng = place.lng;
+      var mtype = place.report_type;
+      var mname = place.pet_name;
+      var manimal = place.animal_type;
+      var mid = place.id;
+      var muserid = place.user_id;
+      var mtags = [];
+      for (var i = 0; i < tags.length; i++) {
+        mtags[i] = tags[i].name
+      }
+      if (mtype === "lost") {
+            icon = '/images/fuzzfinders_favicon.png'
+          } else if (mtype === "found") {
+            icon = '/images/FuzzFinders_icon_blue.png'
+          };
+
+      if (mid != $('#report-map').data().id) {
+        var newMarker = new google.maps.Marker({
+          position: new google.maps.LatLng(mlat, mlng),
+          map: reportMap,
+          title: mname,
+          icon: icon,
+          animation: google.maps.Animation.DROP
+        });
+        newMarker.info = new google.maps.InfoWindow({
+          content: "<div class='infobox'><a href='/users/"+muserid+"/reports/"+mid+"'><b>"+mname+"</b></a><br>"+manimal+"<br>"+mtags+"<br><img src='"+photoUrl+"' width='50' height='50'></div>"
+        });
+        google.maps.event.addListener(newMarker, "click", function(){
+          newMarker.info.open(reportMap, newMarker)
+        })
+      };
+    }
 });
