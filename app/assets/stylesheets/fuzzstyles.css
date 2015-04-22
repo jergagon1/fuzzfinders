@@ -6,6 +6,31 @@
   border-color: #E65C00;
 }
 
+.lost-button {
+  width: 10em;
+  display: block;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.found-button {
+  width: 10em;
+  display: block;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nearby-reports {
+  width: 10em;
+  display: block;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 .login-container {
   width: 80%; 
   margin: 1em auto;"
@@ -19,7 +44,21 @@
   float: left;
 }
 
+.logged-in-banner {
+  margin: 10px;
+}
+
 .log-in-top {
+  float: right;
+}
+
+.edit-profile {
+  margin: 5px;
+  float: left;
+}
+
+.log-out {
+  margin: 5px;
   float: right;
 }
 

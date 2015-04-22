@@ -1,19 +1,31 @@
-<h2>Your submitted reports:</h2>
-<ul class="report-list">
-	<% @user_reports.each do |report|%>
-		<li><a href="/users/<%= current_user.id %>/reports/<%=report.id%>"><%= report.pet_name %></a>, (<%= report.report_type %>)</li>
-	<% end %>
-</ul>
 
 
-<form action="/users/<%= current_user.id %>/reports/new">
-  <input type="hidden" name="report_type" value="lost">
-  <input type="submit" value="Lost a Pet">
-</form>
 
-<form action="/users/<%= current_user.id %>/reports/new">
-  <input type="hidden" name="report_type" value="found">
-  <input type="submit" value="Found a Pet">
-</form>
 
-<%= button_to "Search", 'reports#index', :method => :get %>
+<div class="container">
+  <h3>Your Pet Reports:</h3>
+  <div class="report-list">
+  	<% @user_reports.each do |report|%>
+  		<p class="list-group-item list-group-item-info"><a href="/users/<%= current_user.id %>/reports/<%=report.id%>"><%= report.pet_name %></a>, (<%= report.report_type %>)</p>
+  	<% end %>
+  </div>
+
+
+<div class="container">
+
+
+  <form action="/users/<%= current_user.id %>/reports/new">
+    <input type="hidden" name="report_type" value="lost">
+    <input class="lost-button btn btn-info btn-orange" type="submit" value="I Lost a Pet!">
+  </form>
+
+  <form action="/users/<%= current_user.id %>/reports/new">
+    <input type="hidden" name="report_type" value="found">
+    <input class="found-button btn btn-info btn-orange" type="submit" value="I Found a Pet!">
+  </form>
+
+  <%= button_to "Nearby Reports", 'reports#index', :method => :get, :class => 'nearby-reports btn btn-info btn-orange' %>
+</div>
+
+
+</div>
