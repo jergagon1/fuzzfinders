@@ -36,7 +36,6 @@ class ReportsController < ApplicationController
   def create
     report = current_user.reports.create(report_params)
     redirect_to "/users/#{current_user.id}/reports/#{report.id}/edit"
-
     # respond_to do |format|
     #   if @report.save
     #     format.html { redirect_to @report, notice: 'Report was successfully created.' }
@@ -50,16 +49,12 @@ class ReportsController < ApplicationController
 
   end
 
-  # def map
-  #   # pull latlong from user's info from session
-  #   @report = current_user.reports.last
-  #   @nearby_reports = { testkey: "Value"}
-  # end
-
   def update
     @report = Report.find(params[:id])
     @report.update(report_params)
 
+    render json: @report
+    # redirect_to "/users/#{current_user.id}/reports/#{@report.id}"
     # redirect_to "/"
     # p "test"
 

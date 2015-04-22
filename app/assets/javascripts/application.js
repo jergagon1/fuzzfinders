@@ -16,3 +16,7 @@
 //= require_tree .
 //= require websocket_rails/main
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c15b25ea638201bb99de6b99fbbf98ff051d2ef4

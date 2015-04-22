@@ -9,7 +9,14 @@ Rails.application.configure do
   config.cache_classes = true
 
   # Do not eager load code on boot.
+<<<<<<< HEAD
   config.eager_load = true
+=======
+  config.eager_load = false
+  config.middleware.delete Rack::Lock
+
+
+>>>>>>> c15b25ea638201bb99de6b99fbbf98ff051d2ef4
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
