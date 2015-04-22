@@ -3,6 +3,8 @@
     <%= f.file_field :photo %>
     <%= f.label :pet_name %>
     <%= f.text_field :pet_name, required: true %>
+    <%= f.label :comments %>
+    <%= f.text_area :comments %>
     <%= f.select :animal_type, options_for_select(%w[Dog Cat Reptile Bird Rodent Other]) %>
     <%= hidden_field_tag("report[report_type]", params[:report_type]) %>
 
