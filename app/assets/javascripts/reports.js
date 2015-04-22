@@ -1,6 +1,12 @@
 $(document).ready(function(){
-
-
+  var dispatcher = new WebSocketRails($('#amber-alert').data('uri'), true)
+  function send(message) {
+    dispatcher.trigger('amber_alert', message);
+  }
+  dispatcher.bind('amber_alert', function(data) {
+    console.log("in message function");
+    document.querySelector('#alert-message').innerHTML += "<li>" + data + "</li>";
+    })
   var content;
   function initialize() {
     var mapOptions = {
@@ -64,6 +70,7 @@ $(document).ready(function(){
       zoom: 13,
       center: new google.maps.LatLng(lat, lng)
     };
+
     reportMap = new google.maps.Map(document.getElementById('report-map'), reportMapOptions);
 
     var currentMarker = new google.maps.Marker({
@@ -83,7 +90,7 @@ $(document).ready(function(){
   google.maps.event.addDomListener(window, 'load', initialize);
 
   $(".set-location-form").on("submit", function(event){
-    // event.preventDefault();
+    event.preventDefault();
     // console.log("button clicked");
     var link = $(this).attr("action");
     // console.log(content);
@@ -95,8 +102,9 @@ $(document).ready(function(){
       contentType: "application/json"
     })
     .done(function(response){
-      console.log("response");
-    })
+        // Here we instantiate a new WebSocketRails instance
+        send("new report!");
+      });
   });
     function placeMarker(place, photoUrl, tags) {
       var mlat = place.lat;
