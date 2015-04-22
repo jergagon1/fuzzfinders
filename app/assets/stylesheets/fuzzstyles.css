@@ -32,7 +32,7 @@
 
 
 .login-container {
-  width: 80%; 
+  width: 80%;
   margin: 1em auto;"
 }
 
@@ -70,8 +70,8 @@ Linearise everything – where possible, remove all floats. We want no content s
 
 
 /* media query for iPhone 2G-4S in portrait & landscape */
-@media only screen 
-and (min-device-width : 320px) 
+@media only screen
+and (min-device-width : 320px)
 and (max-device-width : 480px) {
 
 
@@ -86,38 +86,10 @@ and (max-device-width : 480px) {
     width: 14em;
     display: block;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
   }
 
-/*.sign-in-containter {
-  background-image: url("/images/dog-273526_640.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  }*/
 
-
-
-/*  .landing-background {
-    position: fixed;
-    left: 0;
-    right: 0;
-    display: block;
-    background-image: url("/images/dog-273526_640.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-  .bottom-login-button {
-    font-size: 1em;
-    background-color: #E65C00;
-  }
-    opacity: 0.5;
-    z-index: 1;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
-    }*/
 
 
     .sign-up-view {
@@ -140,7 +112,7 @@ and (max-device-width : 480px) {
       /* Helvetica looks terrible on pc, good on iphone */
       /* font-family:Helvetica, Arial, Verdana, sans-serif;*/
       /* padding so nothing touches edge of iphone screen*/
-     /* padding:15px; 
+     /* padding:15px;
       font-size: 4em;
       */
       /*  }*/
