@@ -4,15 +4,17 @@ class ReportsController < ApplicationController
 
   def index
     if params[:tag]
-      @reports = Report.tagged_with(params[:tag])
+      @reports5 = Report.tagged_with(params[:tag])
       @lat = GoogleGeocoder.geocode(current_user.zipcode).lat
       @lng = GoogleGeocoder.geocode(current_user.zipcode).lng
       @photos = []
       @tags = []
-      @reports.each do |report|
+      @reports5.each do |report|
         @photos << report.photo.url
         @tags << report.tags
       end
+      @reports10 = @reports5
+      @reports25 = @reports5
     else
       @reports5 = Report.within(5, :origin => "#{current_user.zipcode}")
       @reports10 = Report.within(10, :origin => "#{current_user.zipcode}")
