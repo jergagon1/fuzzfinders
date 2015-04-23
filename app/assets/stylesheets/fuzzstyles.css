@@ -1,5 +1,45 @@
 /*========DESKTOP STYLES========*/
 
+
+/** {
+  border: solid red 1px;
+}
+*/
+.new-report-field {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 95%;
+}
+
+.create-report-btn {
+  margin-top: 15px;
+}
+
+
+/*div {
+  border: dotted red 1px;
+}*/
+
+.home-button {
+  width: 6em;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+}
+
+#report-map {
+  display: block;
+  margin: 0 auto;
+  width: 20em;
+  height: 20em;
+}
+
+.map-filters {
+  display: block;
+  margin: 0 auto;
+  width: 20em;
+}
+
 .pet-report-list-items {
   width: 95%;
   text-align: left;

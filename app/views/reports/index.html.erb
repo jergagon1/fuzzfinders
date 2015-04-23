@@ -1,5 +1,17 @@
 <div id="report-map" style="width: 500px; height: 500px" data-nearby-reports="<%= @all_nearby.to_json %>" data-lat="<%= @lat %>" data-lng="<%=@lng %>" data-photo-urls="<%=@all_photos.to_json %>" data-tags="<%= @all_tags.to_json %>"></div>
-<div class="map-filters"><button id="all">All</button><button id="lost">Lost</button><button id="found">Found</button>Search Radius: <select id="radius"><option value="5">5 miles</option><option value="10">10 miles</option><option value="25">25 miles</option></select><br>Pet Type: <select id="animal_type"><option value="All">All</option><option value="Dog">Dog</option><option value="Cat">Cat</option><option value="Reptile">Reptile</option><option value="Bird">Bird</option><option value="Rodent">Rodent</option><option value="Other">Other</option></select></div>
+
+<div class="map-filters btn-group btn-group-justified" role="group">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" id="all">All</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" id="lost">Lost</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" id="found">Found</button>
+  </div>
+</div>
+Search Radius: <select id="radius"><option value="5">5 miles</option><option value="10">10 miles</option><option value="25">25 miles</option></select><br>Pet Type: <select id="animal_type"><option value="All">All</option><option value="Dog">Dog</option><option value="Cat">Cat</option><option value="Reptile">Reptile</option><option value="Bird">Bird</option><option value="Rodent">Rodent</option><option value="Other">Other</option></select>
 
 <div id ="5">
 	<% @reports5.each do |report| %>
@@ -48,7 +60,3 @@
 <%= link_to 'home', root_path %>
 <br>
 <br>
-
-
-
-
