@@ -1,8 +1,24 @@
 /*========DESKTOP STYLES========*/
 
-div {
-  border: dotted red 1px;
+
+/** {
+  border: solid red 1px;
 }
+*/
+.new-report-field {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 95%;
+}
+
+.create-report-btn {
+  margin-top: 15px;
+}
+
+
+/*div {
+  border: dotted red 1px;
+}*/
 
 .home-button {
   width: 6em;
@@ -23,6 +39,7 @@ div {
   margin: 0 auto;
   width: 20em;
 }
+
 .pet-report-list-items {
   width: 95%;
   text-align: left;
