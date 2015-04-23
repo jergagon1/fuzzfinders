@@ -20,8 +20,11 @@
 
       <% if user_signed_in? %>
 
-        <div class="container">          
+        <div class="container">
         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-info btn-orange edit-profile' %>
+        <% if current_page?('/reports') %>
+          <%= link_to 'Home', root_path, :class => 'btn btn-info btn-orange edit-profile home-button' %>
+        <% end %>
         <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => 'btn btn-info btn-orange log-out'  %>
         </div>
 
