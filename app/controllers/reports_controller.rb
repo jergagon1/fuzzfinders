@@ -1,11 +1,28 @@
 class ReportsController < ApplicationController
+  include Geokit::Geocoders
   before_action :set_report, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:tag]
       @reports = Report.tagged_with(params[:tag])
+      @lat = GoogleGeocoder.geocode(current_user.zipcode).lat
+      @lng = GoogleGeocoder.geocode(current_user.zipcode).lng
+      @photos = []
+      @tags = []
+      @reports.each do |report|
+        @photos << report.photo.url
+        @tags << report.tags
+      end
     else
-      @reports = Report.all
+      @reports = Report.within(10, :origin => "#{current_user.zipcode}")
+      @photos = []
+      @tags = []
+      @lat = GoogleGeocoder.geocode(current_user.zipcode).lat
+      @lng = GoogleGeocoder.geocode(current_user.zipcode).lng
+      @reports.each do |report|
+        @photos << report.photo.url
+        @tags << report.tags
+      end
     end
   end
 
@@ -35,6 +52,10 @@ class ReportsController < ApplicationController
 
   def create
     report = current_user.reports.create(report_params)
+    if report.report_type == "found"
+      current_user.wag += 1
+      current_user.save
+    end
     redirect_to "/users/#{current_user.id}/reports/#{report.id}/edit"
     # respond_to do |format|
     #   if @report.save
@@ -83,6 +104,6 @@ class ReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:report).permit(:photo, :all_tags, :pet_name, :report_type, :user_id, :lat, :lng, :animal_type)
+    params.require(:report).permit(:photo, :all_tags, :pet_name, :report_type, :user_id, :lat, :lng, :animal_type, :comments)
   end
 end

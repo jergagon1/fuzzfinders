@@ -1,9 +1,71 @@
 /*========DESKTOP STYLES========*/
 
+.pet-report-list-items {
+  width: 95%;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.btn-orange {
+  background-color: #F36F56;
+  border-color: #F36F56;
+}
+
+.lost-button {
+  width: 10em;
+  display: block;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.found-button {
+  width: 10em;
+  display: block;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nearby-reports {
+  width: 10em;
+  display: block;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 
+.login-container {
+  width: 80%;
+  margin: 1em auto;
+}
 
+.field {
+  margin: 1.5em auto;
+}
 
+.sign-up-top {
+  float: left;
+}
+
+.logged-in-banner {
+  margin: 10px;
+}
+
+.log-in-top {
+  float: right;
+}
+
+.edit-profile {
+  margin: 5px;
+  float: left;
+}
+
+.log-out {
+  margin: 5px;
+  float: right;
+}
 
 /*========MOBILE STYLES========*/
 
@@ -13,89 +75,26 @@ Linearise everything – where possible, remove all floats. We want no content s
 
 
 /* media query for iPhone 2G-4S in portrait & landscape */
-@media only screen 
-and (min-device-width : 320px) 
+@media only screen
+and (min-device-width : 320px)
 and (max-device-width : 480px) {
 
 
   body {
-    /*bootstrap doesn't */
+    /*bootstrap doesn't give you top padding so we want this for the phone */
     padding-top: 0.5em;
-  }
-  .navbar-container {
-    display: block;
-    width: 100%;
-  }
-
-  .nav-signup-link {
-    font-size: 1em;
-    background-color: #E65C00;
-    /*want to position these*/
-  }
-
-  .nav-login-link {
-    font-size: 1em;
-    background-color: #E65C00;
   }
 
 
   .fuzz-logo {
-    height: 10em;
-    width: 15em;
+    height: 9em;
+    width: 14em;
     display: block;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
   }
 
-/*.sign-in-containter {
-  background-image: url("/images/dog-273526_640.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  }*/
 
-  .login-header {
-    font-size: 1em;
-  }
-
-  .email-field {
-    width: 60%;
-    margin: 0.5em;
-    padding: 0.5em;
-  }
-
-  .pw-field {
-    width: 60%;
-    margin: 0.5em;
-    padding: 0.5em;
-  }
-
-  #user_remember_me {
-    /*how to size this muuhfuukah???*/
-  }
-
-  
-
-/*  .landing-background {
-    position: fixed;
-    left: 0;
-    right: 0;
-    display: block;
-    background-image: url("/images/dog-273526_640.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-  .bottom-login-button {
-    font-size: 1em;
-    background-color: #E65C00;
-  }
-    opacity: 0.5;
-    z-index: 1;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
-    }*/
 
 
     .sign-up-view {
@@ -112,18 +111,18 @@ and (max-device-width : 480px) {
 
 
 
-   /* body {*/
+    /* body {*/
       /* re-sizes text for you */
       /*-webkit-text-size-adjust:auto;*/
       /* Helvetica looks terrible on pc, good on iphone */
-     /* font-family:Helvetica, Arial, Verdana, sans-serif;*/
+      /* font-family:Helvetica, Arial, Verdana, sans-serif;*/
       /* padding so nothing touches edge of iphone screen*/
-     /* padding:15px; 
+     /* padding:15px;
       font-size: 4em;
-*/
-  /*  }*/
+      */
+      /*  }*/
 
-  }
+    }
 
 
 

@@ -1,55 +1,44 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>Fuzzfinders</title>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <p class="navbar-text pull-right">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-      <% end %>
+
+    <!-- this viewport meta tag scales the rendering of the dom objects for mobile -->
+    <meta name="viewport" content="initial-scale=1">
   </head>
+
   <body>
-   <div id="amber-alert" data-uri="<%= request.host %>:<%= request.port %>/websocket">
-    <ul id="alert-message"></ul>
-<!--     <input id="send"/>
-    <button id="fire">Send</button> -->
-  </div>
-    <h1>FuzzFinders</h1>
-<head>
-  <title>Fuzzfinders</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <div id="amber-alert" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+      <ul id="alert-message"></ul>
+    </div>
+    <div class="container">
 
-  <meta name="viewport" content="initial-scale=1, user-scalable=no">
+      <% if user_signed_in? %>
 
-</head>
-<body>
-<div class="container">
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-info' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-info'  %>
-    <% else %>
-      <%= link_to "Sign Up", new_user_registration_path, :class => 'btn btn-info'  %>
-      <%= link_to "Log In", new_user_session_path, :class => 'btn btn-primary'  %>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+        <div class="container">          
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-info btn-orange edit-profile' %>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => 'btn btn-info btn-orange log-out'  %>
+        </div>
+
+        <div class="logged-in-banner">
+        Logged in as <strong><%= current_user.email %></strong>.
+        </div>
+
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, :class => 'sign-up-top btn btn-info btn-orange'  %>
+        <%= link_to "Log In", new_user_session_path, :class => 'log-in-top btn btn-primary btn-orange'  %>
+      <% end %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
     <%= yield %>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
-<!--     <div id="echo" data-uri="<%= request.host %>:<%= request.port %>/websocket">
-        <ul id="messages"></ul>
-        <input id="send"/>
-        <button id="fire">Send</button>
-    </div> -->
 
     <div>
       <div id="chat_history"></div>
@@ -62,8 +51,8 @@
     </div>
  </div>
 
- <br>
- <br>
+  <br>
+  <br>
 
   </body>
 </html>
