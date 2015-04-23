@@ -1,5 +1,7 @@
 var posted = false;
 var filter = "all";
+var radius = "5";
+var petFilter = "All";
 $(document).ready(function(){
   var dispatcher = new WebSocketRails($('#amber-alert').data('uri'), true)
   function send(message) {
@@ -67,8 +69,6 @@ $(document).ready(function(){
     var lat = $('#report-map').data().lat
     var lng = $('#report-map').data().lng
     var id = $('#report-map').data().id
-    var photoUrls = $('#report-map').data().photoUrls
-    var tags = $('#report-map').data().tags
 
     var reportMapOptions = {
       zoom: 13,
@@ -82,11 +82,22 @@ $(document).ready(function(){
       map: reportMap,
       title: "Your Report Location",
     })
-
-    var places = $('#report-map').data().nearbyReports;
+    if (radius === "5") {
+      var places = $('#report-map').data().nearbyReports[0];
+      var photoUrls = $('#report-map').data().photoUrls[0];
+      var tags = $('#report-map').data().tags[0];
+    } else if (radius === "10") {
+      var places = $('#report-map').data().nearbyReports[1];
+      var photoUrls = $('#report-map').data().photoUrls[1];
+    var tags = $('#report-map').data().tags[1];
+    } else if (radius === "25") {
+      var places = $('#report-map').data().nearbyReports[2];
+      var photoUrls = $('#report-map').data().photoUrls[2];
+      var tags = $('#report-map').data().tags[2];
+    };
 
     for (var i = 0; i < places.length; i++) {
-      placeMarker(places[i],photoUrls[i],tags[i], filter);
+      placeMarker(places[i],photoUrls[i],tags[i], filter, petFilter);
     };
   };
 
@@ -123,8 +134,79 @@ $(document).ready(function(){
     filter = "found";
     initializeReport();
   });
+  $('#radius').change(function() {
+    radius = $('#radius').val();
+    if (radius === "5") {
+      $('#5').show();
+      $('#10').hide();
+      $('#25').hide();
+    } else if (radius === "10"){
+      $('#5').hide();
+      $('#10').show();
+      $('#25').hide();
+    } else if (radius === "25"){
+      $('#5').hide();
+      $('#10').hide();
+      $('#25').show();
+    };
+    initializeReport();
+  });
+  $('#animal_type').change(function() {
+    petFilter = $('#animal_type').val();
+    if (petFilter === "All") {
+      $('.Dog').show()
+      $('.Cat').show()
+      $('.Reptile').show()
+      $('.Bird').show()
+      $('.Rodent').show()
+      $('.Other').show()
+    } else if (petFilter === "Dog") {
+      $('.Dog').show()
+      $('.Cat').hide()
+      $('.Reptile').hide()
+      $('.Bird').hide()
+      $('.Rodent').hide()
+      $('.Other').hide()
+    }else if (petFilter === "Cat") {
+      $('.Dog').hide()
+      $('.Cat').show()
+      $('.Reptile').hide()
+      $('.Bird').hide()
+      $('.Rodent').hide()
+      $('.Other').hide()
+    }else if (petFilter === "Reptile") {
+      $('.Dog').hide()
+      $('.Cat').hide()
+      $('.Reptile').show()
+      $('.Bird').hide()
+      $('.Rodent').hide()
+      $('.Other').hide()
+    }else if (petFilter === "Bird") {
+      $('.Dog').hide()
+      $('.Cat').hide()
+      $('.Reptile').hide()
+      $('.Bird').show()
+      $('.Rodent').hide()
+      $('.Other').hide()
+    }else if (petFilter === "Rodent") {
+      $('.Dog').hide()
+      $('.Cat').hide()
+      $('.Reptile').hide()
+      $('.Bird').hide()
+      $('.Rodent').show()
+      $('.Other').hide()
+    }else if (petFilter === "Other") {
+      $('.Dog').hide()
+      $('.Cat').hide()
+      $('.Reptile').hide()
+      $('.Bird').hide()
+      $('.Rodent').hide()
+      $('.Other').show()
+    }
+    initializeReport();
+  });
 
-    function placeMarker(place, photoUrl, tags, filter) {
+    function placeMarker(place, photoUrl, tags, filter, petFilter) {
       var mlat = place.lat;
       var mlng = place.lng;
       var mtype = place.report_type;
@@ -142,7 +224,7 @@ $(document).ready(function(){
             icon = '/images/FuzzFinders_icon_blue.png'
           };
 
-      if (mid != $('#report-map').data().id && (mtype === filter) || filter === "all") {
+      if ((mid != $('#report-map').data().id) && (mtype === filter || filter === "all") && (manimal === petFilter || petFilter === "All")) {
         var newMarker = new google.maps.Marker({
           position: new google.maps.LatLng(mlat, mlng),
           map: reportMap,
