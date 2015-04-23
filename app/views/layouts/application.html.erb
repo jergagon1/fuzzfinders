@@ -12,10 +12,15 @@
     <meta name="viewport" content="initial-scale=1">
   </head>
 
+
+
   <body>
-    <div id="amber-alert" data-uri="<%= request.host %>:<%= request.port %>/websocket">
-      <ul id="alert-message"></ul>
-    </div>
+    <marquee behavior="scroll" direction="left">
+      <div id="amber-alert" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+      <p id="alert-message"></p>
+      </div>
+    </marquee>
+
     <div class="container">
 
       <% if user_signed_in? %>
@@ -46,12 +51,16 @@
     <div>
       <div id="chat_history"></div>
     </div>
-    <div>
+
+    <% if user_signed_in? %>
       <div>
-        <input class="span" id="new_message" prompt="New message" type="text"></input>
-        <button class="btn btn-primary" id="send_message">Chat</button>
+        <div>
+          <input class="span" id="new_message" prompt="New message" type="text"></input>
+          <button class="btn btn-primary" id="send_message">Chat</button>
+        </div>
       </div>
-    </div>
+    <% end %>
+
  </div>
 
   <br>
