@@ -8,6 +8,17 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
+.set-loc-btn {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.view-rpt-btn {
+  margin: 5px;
+}
+
 #amber-alert {
   font-size: 2em;
   background-color: yellow;
