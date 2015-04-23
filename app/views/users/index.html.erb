@@ -1,17 +1,29 @@
 
 
 <div class="container">
+
   <button class="btn btn-primary btn-orange" type="button">
     Your Wags <span class="badge"><%= current_user.wag %></span>
   </button>
-  <h3>Your Pet Reports:</h3>
-  <div class="report-list">
-  	<% @user_reports.each do |report|%>
-      <form  action="/users/<%= current_user.id %>/reports/<%=report.id%>">
-  		  <input class="list-group-item list-group-item-info pet-report-list-items" type="submit" value="<%= report.pet_name %>, (<%= report.report_type %>)">
-      </form>
-  	<% end %>
-  </div>
+
+  <% if current_user.reports.length == 0 %>
+ 
+    <h4><em>Get wags by helping to find lost pets!</em><h4>
+
+    <h3>Report a lost or found pet:<h3>
+
+  <% else %>
+
+    <h3>Your Pet Reports:</h3>
+    <div class="report-list">
+    	<% @user_reports.each do |report|%>
+        <form  action="/users/<%= current_user.id %>/reports/<%=report.id%>">
+    		  <input class="list-group-item list-group-item-info pet-report-list-items" type="submit" value="<%= report.pet_name %>, (<%= report.report_type %>)">
+        </form>
+    	<% end %>
+    </div>
+
+  <% end %>
 
 
 <div class="container">

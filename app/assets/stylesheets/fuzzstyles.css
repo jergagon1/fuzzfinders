@@ -1,9 +1,24 @@
 /*========DESKTOP STYLES========*/
 
 
-* {
-  border: solid red 1px;
+/*div {
 
+  border: solid red 1px;
+}*/
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+.set-loc-btn {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.view-rpt-btn {
+  margin: 5px;
 }
 #chat_history{
   vertical-align: top;
@@ -24,9 +39,7 @@
   font-size: 2em;
   background-color: yellow;
   width: 100%;
-
 }
-
 
 .new-report-field {
   margin-top: 15px;
@@ -38,38 +51,7 @@
   margin-top: 15px;
 }
 
-/*=============== reports index styles ==================*/
-
-
-
-.nearby-reports-list {
-  margin-top: 1em;
-  /*border-radius: 15px;*/
-}
-
-.nearby-reports-list-item {
-  /*background-color: blue;*/
-  /*margin-top: 0.5em;*/
-  overflow: auto;
-  border-radius: 10px;
-}
-
-.nearby-reports-thumbnail {
-  float: left;
-}
-
-img.nearby-reports-thumbnail {
-  width: 40%;
-  /*padding: 0.5em;*/
-}
-
-.nearby-reports-text-block {
-  /*background-color: blue;*/
-  width: 60%;
-  float: left;
-  padding-left:1em;
-/*  padding: 1em;*/
-}
+/*=============== REPORTS INDEX STYLES ==================*/
 
 .home-button {
   width: 6em;
@@ -79,19 +61,74 @@ img.nearby-reports-thumbnail {
 }
 
 #report-map {
+  width: 95%;
+  height: 19em;
   display: block;
-  margin: 0 auto;
-  width: 20em;
-  height: 20em;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
-.map-filters {
-  display: block;
-  margin: 0 auto;
-  width: 20em;
+.map-filters-btns {
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+#radius {
+  margin: 5px;
+}
+
+#animal_type {
+  margin: 5px;
+}
+
+.nearby-reports-list {
+  margin-top: 1em;
+}
+
+.nearby-reports-list-item {
+  overflow: auto;
+  border-radius: 10px;
+  margin: 7px;
+}
+
+.nearby-reports-thumbnail {
+  float: left;
+}
+
+img.nearby-reports-thumbnail {
+  width: 40%;
+}
+
+.nearby-reports-text-block {
+  width: 59%;
+  float: right;
+  padding-left:1em;
+  font-size: 0.8em ;
+}
+
+
+
 
 /*======================================================*/
+
+
+.report-show-img {
+width: 95%;
+}
+
+.report-show-text {
+  width: 95%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /*color: #31708f;*/
+  background-color: #d9edf7;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
 
 .pet-report-list-items {
   width: 95%;
