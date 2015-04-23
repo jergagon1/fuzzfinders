@@ -3,7 +3,17 @@
 
 /** {
   border: solid red 1px;
-}*/
+
+}
+*/
+
+#amber-alert {
+  font-size: 2em;
+  background-color: yellow;
+  width: 100%;
+
+}
+
 
 .new-report-field {
   margin-top: 15px;

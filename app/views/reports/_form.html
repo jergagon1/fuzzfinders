@@ -2,7 +2,7 @@
 
     <div style="width: 100%">
       <%= f.label :Pet_Type %>
-      <%= f.select :animal_type, options_for_select(%w[Dog Cat Reptile Bird Rodent Other]), :class => 'dropdown' %>
+      <%= f.select :animal_type, options_for_select(%w[Dog Cat Reptile Bird Rodent Other]) %>
     </div>
 
     <% if params[:report_type] == "found"  %>
