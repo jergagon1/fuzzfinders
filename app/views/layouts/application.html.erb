@@ -36,14 +36,23 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
-<!--     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> -->
-
     <%= yield %>
 
-  </div>
-
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
+
+    <div>
+      <div id="chat_history"></div>
+    </div>
+    <div>
+      <div>
+        <input class="span" id="new_message" prompt="New message" type="text"></input>
+        <button class="btn btn-primary" id="send_message">Chat</button>
+      </div>
+    </div>
+ </div>
+
+  <br>
+  <br>
 
   </body>
 </html>
