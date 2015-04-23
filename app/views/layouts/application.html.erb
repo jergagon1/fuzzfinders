@@ -10,6 +10,9 @@
 
     <!-- this viewport meta tag scales the rendering of the dom objects for mobile -->
     <meta name="viewport" content="initial-scale=1">
+
+    <!-- tag for Nunito font -->
+    <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
   </head>
 
 
@@ -17,7 +20,7 @@
   <body>
     <marquee behavior="scroll" direction="left">
       <div id="amber-alert" data-uri="<%= request.host %>:<%= request.port %>/websocket">
-      <p id="alert-message"></p>
+        <div id="alert-message"></div>
       </div>
     </marquee>
 

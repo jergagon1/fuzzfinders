@@ -1,5 +1,8 @@
 /*========DESKTOP STYLES========*/
 
+body {
+  font-family: 'Nunito', sans-serif;
+}
 
 /** {
   border: solid red 1px;
