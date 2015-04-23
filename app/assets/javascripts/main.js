@@ -30,7 +30,7 @@ this.ChatApp = (function() {
   ChatApp.prototype.receiveGlobalMessage = function(message) {
     if ((lastMessage != message.text || lastMessage === "") && message.text != '' ) {
       lastMessage = message.text
-      return $('#chat_history').append(this.messageTemplate(message));
+      return $('#chat_history').append(this.messageTemplate(message)).scrollTop(10000);
     }
   };
 
