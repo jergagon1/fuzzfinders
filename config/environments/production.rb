@@ -59,20 +59,28 @@ Rails.application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
-
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
+  # config.action_mailer.smtp_settings = {
+  #  :address              => "smtp.gmail.com",
+  #  :port                 => 587,
+  #  :user_name            => ENV['gmail_username'],
+  #  :password             => ENV['gmail_password'],
+  #  :authentication       => "plain",
+  # :enable_starttls_auto => true
+  # }
   config.action_mailer.smtp_settings = {
-   :address              => "smtp.gmail.com",
-   :port                 => 587,
-   :user_name            => ENV['gmail_username'],
-   :password             => ENV['gmail_password'],
-   :authentication       => "plain",
-  :enable_starttls_auto => true
-  }
+      :address   => "smtp.mandrillapp.com",
+      :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
+      :enable_starttls_auto => true, # detects and uses STARTTLS
+      :user_name => ENV["MANDRILL_USERNAME"],
+      :password  => ENV["MANDRILL_PASSWORD"], # SMTP password is any valid API key
+      :authentication => 'login', # Mandrill supports 'plain' or 'login'
+      :domain => 'peaceful-wave-1628.herokuapp.com', # your domain to identify your server when connecting
+    }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

@@ -1,6 +1,4 @@
-
-<div id="report-map" data-nearby-reports="<%= @reports.to_json %>" data-lat="<%= @lat %>" data-lng="<%=@lng %>" data-photo-urls="<%=@photos.to_json %>" data-tags="<%= @tags.to_json %>">
-</div>
+<div id="report-map" style="width: 500px; height: 500px" data-nearby-reports="<%= @all_nearby.to_json %>" data-lat="<%= @lat %>" data-lng="<%=@lng %>" data-photo-urls="<%=@all_photos.to_json %>" data-tags="<%= @all_tags.to_json %>"></div>
 
 <div class="map-filters btn-group btn-group-justified" role="group">
   <div class="btn-group" role="group">
@@ -13,20 +11,61 @@
     <button type="button" class="btn btn-default" id="found">Found</button>
   </div>
 </div>
+Search Radius: <select id="radius"><option value="5">5 miles</option><option value="10">10 miles</option><option value="25">25 miles</option></select><br>Pet Type: <select id="animal_type"><option value="All">All</option><option value="Dog">Dog</option><option value="Cat">Cat</option><option value="Reptile">Reptile</option><option value="Bird">Bird</option><option value="Rodent">Rodent</option><option value="Other">Other</option></select>
 <div class="container nearby-reports-list">
-  <% @reports.each do |report| %>
-    <div class="nearby-reports-list-item list-group-item list-group-item-info">
-      <%= image_tag report.photo.url(:thumb), :class => "nearby-reports-thumbnail" %>
-      <div class="nearby-reports-text-block">
-        <a href="/users/<%=report.user_id %>/reports/<%=report.id%>">
-          <h4><%= report.pet_name %></h4>
-        </a>(<%= report.report_type %>)<br>
-        Pet Type: <%= report.animal_type %><br>
-        <span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
-        <br>
-        Posted by: <%= report.user.username %><br>
-        Tags: <%=raw tag_links(report.all_tags)%><br><br>
-      </div>
-    </div>
-  <% end %>
+	<div id ="5">
+		<% @reports5.each do |report| %>
+			<div class="<%= report.animal_type %> nearby-reports-list-item list-group-item list-group-item-info">
+				<div><%= image_tag report.photo.url(:thumb) :class => "nearby-reports-thumbnail" %></div>
+				<div class="nearby-reports-text-block">
+        	<a href="/users/<%=report.user_id %>/reports/<%=report.id%>">
+          	<h4><%= report.pet_name %></h4>
+        	</a>(<%= report.report_type %>)<br>
+				<br>
+				Pet Type: <%= report.animal_type %><br>
+				<span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
+				<br>
+				Posted by: <%= report.user.username %><br>
+				Tags: <%=raw tag_links(report.all_tags)%><br><br>
+			</div>
+		<% end %>
+	</div>
+	<div id ="10" style="display:none">
+		<% @reports10.each do |report| %>
+				<div class="<%= report.animal_type %> nearby-reports-list-item list-group-item list-group-item-info">
+				<div><%= image_tag report.photo.url(:thumb) :class => "nearby-reports-thumbnail" %></div>
+				<div class="nearby-reports-text-block">
+        	<a href="/users/<%=report.user_id %>/reports/<%=report.id%>">
+        		<h4><%= report.pet_name %></h4>
+        	</a>(<%= report.report_type %>)<br>
+				<br>
+				Pet Type: <%= report.animal_type %><br>
+				<span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
+				<br>
+				Posted by: <%= report.user.username %><br>
+				Tags: <%=raw tag_links(report.all_tags)%><br><br>
+			</div>
+		<% end %>
+	</div>
+	<div id ="25" style="display:none">
+		<% @reports25.each do |report| %>
+			<div class="<%= report.animal_type %> nearby-reports-list-item list-group-item list-group-item-info">
+				<div><%= image_tag report.photo.url(:thumb) :class => "nearby-reports-thumbnail"%></div>
+				<div class="nearby-reports-text-block">
+        	<a href="/users/<%=report.user_id %>/reports/<%=report.id%>">
+          	<h4><%= report.pet_name %></h4>
+        	</a>(<%= report.report_type %>)<br>
+				<br>
+				Pet Type: <%= report.animal_type %><br>
+				<span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
+				<br>
+				Posted by: <%= report.user.username %><br>
+				Tags: <%=raw tag_links(report.all_tags)%><br><br>
+			</div>
+		<% end %>
+	</div>
 </div>
+<br>
+<%= link_to 'home', root_path %>
+<br>
+<br>
