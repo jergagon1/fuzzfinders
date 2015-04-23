@@ -24,6 +24,7 @@ body {
   vertical-align: top;
   height: 4.50em;
   overflow-y: scroll;
+  /*border: solid 1px black;*/
 }
 
 .navbar {
