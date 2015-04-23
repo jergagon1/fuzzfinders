@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 #   end
 
   def screen_name
-    email.split('@').first
+    username
   end
 
   def defaults

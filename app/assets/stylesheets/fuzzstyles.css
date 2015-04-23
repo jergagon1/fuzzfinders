@@ -3,6 +3,7 @@
 
 /** {
   border: solid red 1px;
+
 }
 */
 
@@ -12,6 +13,7 @@
   width: 100%;
 
 }
+
 
 .new-report-field {
   margin-top: 15px;
@@ -23,10 +25,38 @@
   margin-top: 15px;
 }
 
+/*=============== reports index styles ==================*/
 
-/*div {
-  border: dotted red 1px;
-}*/
+
+
+.nearby-reports-list {
+  margin-top: 1em;
+  /*border-radius: 15px;*/
+}
+
+.nearby-reports-list-item {
+  /*background-color: blue;*/
+  /*margin-top: 0.5em;*/
+  overflow: auto;
+  border-radius: 10px;
+}
+
+.nearby-reports-thumbnail {
+  float: left;
+}
+
+img.nearby-reports-thumbnail {
+  width: 40%;
+  /*padding: 0.5em;*/
+}
+
+.nearby-reports-text-block {
+  /*background-color: blue;*/
+  width: 60%;
+  float: left;
+  padding-left:1em;
+/*  padding: 1em;*/
+}
 
 .home-button {
   width: 6em;
@@ -47,6 +77,8 @@
   margin: 0 auto;
   width: 20em;
 }
+
+/*======================================================*/
 
 .pet-report-list-items {
   width: 95%;

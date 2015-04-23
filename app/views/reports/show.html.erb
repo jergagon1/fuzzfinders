@@ -9,8 +9,8 @@ Tags: <%=raw tag_links(@report.all_tags) %>
 Created By: <%= @report.user.username %>
 <br>
 Comments: <%= @report.comments %>
-<div id="report-map" style="width: 300px; height: 300px" data-nearby-reports="<%= @nearby_reports.to_json %>" data-lat="<%= @report.lat %>" data-lng="<%=@report.lng %>" data-id="<%=@report.id %>" data-photo-urls="<%=@nearby_photos.to_json %>" data-tags="<%= @nearby_tags.to_json %>"></div>
-<div class="map-filters"><button id="all">All</button><button id="lost">Lost</button><button id="found">Found</button></div>
+<div id="report-map" style="width: 300px; height: 300px" data-nearby-reports="<%= @all_nearby.to_json %>" data-lat="<%= @report.lat %>" data-lng="<%=@report.lng %>" data-id="<%=@report.id %>" data-photo-urls="<%=@all_photos.to_json %>" data-tags="<%= @all_tags.to_json %>"></div>
+<div class="map-filters"><button id="all">All</button><button id="lost">Lost</button><button id="found">Found</button>Search Radius: <select id="radius"><option value="5">5 miles</option><option value="10">10 miles</option><option value="25">25 miles</option></select><br>Pet Type: <select id="animal_type"><option value="all">All</option><option value="Dog">Dog</option><option value="Cat">Cat</option><option value="Reptile">Reptile</option><option value="Bird">Bird</option><option value="Rodent">Rodent</option><option value="Other">Other</option></select></div>
 
 <%= link_to 'Back', root_path %>
 
