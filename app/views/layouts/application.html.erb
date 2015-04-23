@@ -20,8 +20,11 @@
 
       <% if user_signed_in? %>
 
-        <div class="container">          
+        <div class="container">
         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-info btn-orange edit-profile' %>
+        <% if current_page?('/reports') %>
+          <%= link_to 'Home', root_path, :class => 'btn btn-info btn-orange edit-profile home-button' %>
+        <% end %>
         <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => 'btn btn-info btn-orange log-out'  %>
         </div>
 
@@ -36,14 +39,23 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
-<!--     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> -->
-
     <%= yield %>
 
-  </div>
-
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
+
+    <div>
+      <div id="chat_history"></div>
+    </div>
+    <div>
+      <div>
+        <input class="span" id="new_message" prompt="New message" type="text"></input>
+        <button class="btn btn-primary" id="send_message">Chat</button>
+      </div>
+    </div>
+ </div>
+
+  <br>
+  <br>
 
   </body>
 </html>

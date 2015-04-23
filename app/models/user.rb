@@ -11,8 +11,12 @@ class User < ActiveRecord::Base
 #   def send_notification
 #     UserMailer.new_user(self).deliver
 #   end
+
+  def screen_name
+    email.split('@').first
+  end
+
   def defaults
     self.wag ||= 0
   end
-
 end
