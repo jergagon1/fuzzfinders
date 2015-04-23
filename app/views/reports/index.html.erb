@@ -1,7 +1,7 @@
 <div class="container">
 
 <!-- MAP -->
-  <div id="report-map" style="width: 300px; height: 300px" data-nearby-reports="<%= @all_nearby.to_json %>" data-lat="<%= @lat %>" data-lng="<%=@lng %>" data-photo-urls="<%=@all_photos.to_json %>" data-tags="<%= @all_tags.to_json %>"></div>
+  <div id="report-map" data-nearby-reports="<%= @all_nearby.to_json %>" data-lat="<%= @lat %>" data-lng="<%=@lng %>" data-photo-urls="<%=@all_photos.to_json %>" data-tags="<%= @all_tags.to_json %>"></div>
 
   <!-- FILTER BUTTONS BELOW MAP -->
   <div class="map-filters-btns btn-group btn-group-justified" role="group">

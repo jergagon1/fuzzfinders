@@ -34,8 +34,14 @@ body {
 }
 
 #report-map {
+  width: 95%;
+  height: 19em;
   display: block;
-  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .map-filters-btns {
@@ -81,6 +87,21 @@ img.nearby-reports-thumbnail {
 
 
 /*======================================================*/
+
+
+.report-show-img {
+width: 95%;
+}
+
+.report-show-text {
+  width: 95%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /*color: #31708f;*/
+  background-color: #d9edf7;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
 
 .pet-report-list-items {
   width: 95%;

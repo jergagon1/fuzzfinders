@@ -1,16 +1,54 @@
-<h2><%= @report.pet_name %></h2><br>
-<%= @report.report_type %><br>
-<%= image_tag @report.photo.url(:medium) %><br>
-Pet type: <%= @report.animal_type %><br>
-<span>Created: <%= time_ago_in_words(@report.created_at)%> ago </span>
-<br>
-Tags: <%=raw tag_links(@report.all_tags) %>
-<br>
-Created By: <%= @report.user.username %>
-<br>
-Comments: <%= @report.comments %>
+<div class="container">
+  <div>
+    <h3><%= @report.pet_name %></h3>
+    <h4><%= @report.report_type %> by user: <%= @report.user.username %></h4>
+  </div>
+  <div class="container">
+    <%= image_tag @report.photo.url(:medium), :class => "report-show-img" %><br>
+  </div>
+  <div class="container report-show-text">
+    Pet type: <%= @report.animal_type %><br>
+    <span>Created: <%= time_ago_in_words(@report.created_at)%> ago </span>
+    <br>
+    Tags: <%=raw tag_links(@report.all_tags) %>
+    <br>
+    Created By: <%= @report.user.username %>
+    <br>
+    Comments: <%= @report.comments %>
+  </div>
+</div>
+
+
 <div id="report-map" style="width: 300px; height: 300px" data-nearby-reports="<%= @all_nearby.to_json %>" data-lat="<%= @report.lat %>" data-lng="<%=@report.lng %>" data-id="<%=@report.id %>" data-photo-urls="<%=@all_photos.to_json %>" data-tags="<%= @all_tags.to_json %>"></div>
-<div class="map-filters"><button id="all">All</button><button id="lost">Lost</button><button id="found">Found</button>Search Radius: <select id="radius"><option value="5">5 miles</option><option value="10">10 miles</option><option value="25">25 miles</option></select><br>Pet Type: <select id="animal_type"><option value="all">All</option><option value="Dog">Dog</option><option value="Cat">Cat</option><option value="Reptile">Reptile</option><option value="Bird">Bird</option><option value="Rodent">Rodent</option><option value="Other">Other</option></select></div>
+<div class="map-filters">
+  <div class="map-filters-btns btn-group btn-group-justified" role="group">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary btn-orange" id="all">All</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary btn-orange" id="lost">Lost</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary btn-orange" id="found">Found</button>
+    </div>
+  </div>
+
+  <select id="radius">
+    <option value="5">5 miles</option>
+    <option value="10">10 miles</option>
+    <option value="25">25 miles</option>
+  </select> Search Radius
+ <br>
+ <select id="animal_type">
+  <option value="all">All</option>
+  <option value="Dog">Dog</option>
+  <option value="Cat">Cat</option>
+  <option value="Reptile">Reptile</option>
+  <option value="Bird">Bird</option>
+  <option value="Rodent">Rodent</option>
+  <option value="Other">Other</option>
+ </select> Pet Type
+</div>
 
 <%= link_to 'Back', root_path %>
 
