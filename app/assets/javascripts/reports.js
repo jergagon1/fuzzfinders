@@ -10,7 +10,7 @@ $(document).ready(function(){
   dispatcher.bind('amber_alert', function(data) {
     if ( posted === false) {
       posted = true;
-      document.querySelector('#alert-message').innerHTML += "<li>" + data + "</li>";
+      document.querySelector('#alert-message').innerHTML += "<p>" + data + "</p>";
     }    
   })
   var content;
