@@ -34,7 +34,7 @@ gem 'geokit-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'websocket-rails'
-gem 'thin'
+# gem 'thin'
 
 
 # Use Capistrano for deployment
