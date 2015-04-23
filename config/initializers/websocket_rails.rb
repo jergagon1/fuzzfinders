@@ -5,6 +5,7 @@ WebsocketRails.setup do |config|
   # current Rails environment log level.
   # config.log_level = :debug
 
+
   # Uncomment to change the default log file path.
   # config.log_path = "#{Rails.root}/log/websocket_rails.log"
 

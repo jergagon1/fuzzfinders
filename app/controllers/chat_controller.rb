@@ -9,4 +9,10 @@ class ChatController < WebsocketRails::BaseController
     broadcast_message :new_message, {:user => current_user.screen_name, :text => message[:text]}
   end
 
+  # def new_message
+  #     # Here we call the rails-websocket broadcast_message method
+  #     broadcast_message :new_message, 'Echo: ' + message
+  # end
+
+
 end
