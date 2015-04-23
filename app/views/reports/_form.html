@@ -1,17 +1,32 @@
 <%= form_for [@user, @report], :url => user_reports_path, :html => { :multipart => true } do |f| %>
 
-    <%= f.file_field :photo %>
-    <%= f.label :pet_name %>
-    <%= f.text_field :pet_name, required: true %>
-    <%= f.label :comments %>
-    <%= f.text_area :comments %>
-    <%= f.select :animal_type, options_for_select(%w[Dog Cat Reptile Bird Rodent Other]) %>
+    <div style="width: 100%">
+      <%= f.label :Pet_Type %>
+      <%= f.select :animal_type, options_for_select(%w[Dog Cat Reptile Bird Rodent Other]), :class => 'dropdown' %>
+    </div>
+
+    <% if params[:report_type] == "found"  %>
+
+    <%= f.text_field :pet_name, required: true, :placeholder => "One-line description of the animal", :class => 'form-control new-report-field' %>
+
+      <%= f.text_area :comments, :placeholder => "Describe the lost pet you've found and whether you have it with you", :class => 'form-control new-report-field'  %>
+
+    <% elsif params[:report_type] == "lost"  %>
+   
+      <%= f.text_field :pet_name, required: true, :placeholder => "Your pet's name", :class => 'form-control new-report-field' %>
+
+      <%= f.text_area :comments, :placeholder => "Tell us about your pet's breed, appearance, and typical behavior", :class => 'form-control new-report-field'  %>
+    <% end %>
+
     <%= hidden_field_tag("report[report_type]", params[:report_type]) %>
 
-    <%= f.text_field :all_tags, placeholder: "Tags separated by commas" %>
+    <%= f.text_field :all_tags, placeholder: "Tags (i.e. lab, black) comma-separated", :class => 'form-control new-report-field' %>
 
-    <%= f.submit %>
-  </div>
+    <div style="width: 95%; margin-left: 5px">
+      <%= f.file_field :photo %>
+    </div>
+
+    <%= f.submit :class => 'btn btn-primary btn-orange create-report-btn' %>
 <% end %>
 
 
