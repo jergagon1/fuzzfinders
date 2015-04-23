@@ -16,14 +16,11 @@
 <div>
   <% @reports.each do |report| %>
     <div class="report-list-item">
-      <div>
-        <%= image_tag report.photo.url(:thumb) %>
-      </div>
-      <div>
+      <%= image_tag report.photo.url(:thumb) %>
+      <div class="">
         <a href="/users/<%=report.user_id %>/reports/<%=report.id%>">
           <%= report.pet_name %>
-        </a>(<%= report.report_type %>)
-        <br>
+        </a>(<%= report.report_type %>)<br>
         Pet Type: <%= report.animal_type %><br>
         <span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
         <br>
