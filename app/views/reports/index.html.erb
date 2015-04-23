@@ -1,17 +1,43 @@
-<div id="report-map" style="width: 300px; height: 300px" data-nearby-reports="<%= @all_nearby.to_json %>" data-lat="<%= @lat %>" data-lng="<%=@lng %>" data-photo-urls="<%=@all_photos.to_json %>" data-tags="<%= @all_tags.to_json %>"></div>
+<div class="container">
 
-<div class="map-filters btn-group btn-group-justified" role="group">
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default" id="all">All</button>
+<!-- MAP -->
+  <div id="report-map" style="width: 300px; height: 300px" data-nearby-reports="<%= @all_nearby.to_json %>" data-lat="<%= @lat %>" data-lng="<%=@lng %>" data-photo-urls="<%=@all_photos.to_json %>" data-tags="<%= @all_tags.to_json %>"></div>
+
+  <!-- FILTER BUTTONS BELOW MAP -->
+  <div class="map-filters-btns btn-group btn-group-justified" role="group">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary btn-orange" id="all">All</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary btn-orange" id="lost">Lost</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary btn-orange" id="found">Found</button>
+    </div>
   </div>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default" id="lost">Lost</button>
+
+  <!-- DROPDOWN MENUS FOR MAP FILTER -->
+  <div>
+    <select id="radius">
+      <option value="5">5 miles</option>
+      <option value="10">10 miles</option>
+      <option value="25">25 miles</option>
+    </select> Search Radius
   </div>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default" id="found">Found</button>
+  <div>
+    <select id="animal_type">
+      <option value="All">All</option>
+      <option value="Dog">Dog</option>
+      <option value="Cat">Cat</option>
+      <option value="Reptile">Reptile</option>
+      <option value="Bird">Bird</option>
+      <option value="Rodent">Rodent</option>
+      <option value="Other">Other</option>
+    </select> Pet Type
   </div>
 </div>
-Search Radius: <select id="radius"><option value="5">5 miles</option><option value="10">10 miles</option><option value="25">25 miles</option></select><br>Pet Type: <select id="animal_type"><option value="All">All</option><option value="Dog">Dog</option><option value="Cat">Cat</option><option value="Reptile">Reptile</option><option value="Bird">Bird</option><option value="Rodent">Rodent</option><option value="Other">Other</option></select>
+
+
 <div class="container nearby-reports-list">
 	<div id ="5">
 		<% @reports5.each do |report| %>
@@ -19,9 +45,8 @@ Search Radius: <select id="radius"><option value="5">5 miles</option><option val
 				<div><%= image_tag report.photo.url(:medium), :class => "nearby-reports-thumbnail" %></div>
 				<div class="nearby-reports-text-block">
         	<a href="/users/<%=report.user_id %>/reports/<%=report.id%>">
-          	<h4><%= report.pet_name %></h4>
-        	</a>(<%= report.report_type %>)<br>
-					<br>
+          	<h5><%= report.pet_name %>
+        	</a>(<%= report.report_type %>)</h5>
 					Pet Type: <%= report.animal_type %><br>
 					<span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
 					<br>
@@ -33,19 +58,18 @@ Search Radius: <select id="radius"><option value="5">5 miles</option><option val
 	</div>
 	<div id ="10" style="display:none">
 		<% @reports10.each do |report| %>
-				<div class="<%= report.animal_type %> nearby-reports-list-item list-group-item list-group-item-info">
-				<div><%= image_tag report.photo.url(:medium), :class => "nearby-reports-thumbnail" %></div>
-				<div class="nearby-reports-text-block">
-        	<a href="/users/<%=report.user_id %>/reports/<%=report.id%>">
-        		<h4><%= report.pet_name %></h4>
-        	</a>(<%= report.report_type %>)<br>
-				<br>
-				Pet Type: <%= report.animal_type %><br>
-				<span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
-				<br>
-				Posted by: <%= report.user.username %><br>
-				Tags: <%=raw tag_links(report.all_tags)%><br><br>
-			</div>
+  				<div class="<%= report.animal_type %> nearby-reports-list-item list-group-item list-group-item-info">
+  				<div><%= image_tag report.photo.url(:medium), :class => "nearby-reports-thumbnail" %></div>
+  				<div class="nearby-reports-text-block">
+          	<a href="/users/<%=report.user_id %>/reports/<%=report.id%>">
+          		<h5><%= report.pet_name %>
+          	</a>(<%= report.report_type %>)</h5>
+  				Pet Type: <%= report.animal_type %><br>
+  				<span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
+  				<br>
+  				Posted by: <%= report.user.username %><br>
+  				Tags: <%=raw tag_links(report.all_tags)%><br><br>
+  			</div>
 			</div>
 		<% end %>
 	</div>
@@ -55,9 +79,8 @@ Search Radius: <select id="radius"><option value="5">5 miles</option><option val
 				<div><%= image_tag report.photo.url(:medium), :class => "nearby-reports-thumbnail"%></div>
 				<div class="nearby-reports-text-block">
         	<a href="/users/<%=report.user_id %>/reports/<%=report.id%>">
-          	<h4><%= report.pet_name %></h4>
-        	</a>(<%= report.report_type %>)<br>
-				<br>
+          	<h5><%= report.pet_name %>
+        	</a>(<%= report.report_type %>)</h5>
 				Pet Type: <%= report.animal_type %><br>
 				<span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
 				<br>
@@ -68,6 +91,7 @@ Search Radius: <select id="radius"><option value="5">5 miles</option><option val
 		<% end %>
 	</div>
 </div>
+
 <br>
 <%= link_to 'home', root_path %>
 <br>
