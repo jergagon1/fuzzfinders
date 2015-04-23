@@ -1,13 +1,13 @@
 class UserMailer < ActionMailer::Base
   default from: "no-reply@gmail.com"
-  default to: "peterbrownpa@gmail.com"
 
   def mandrill_client
     @mandrill_client ||= Mandrill::API.new ENV['MANDRILL_API_KEY']
   end
+
   def new_user(user)
     @user = user
-    mail(subject: "New User: #{user.email}")
+    mail(to: user.email, subject: "New User: #{user.username}")
   end
   # to make dynamic pass in user parameter
   def lost_pet(report,user)

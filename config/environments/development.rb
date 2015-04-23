@@ -38,7 +38,7 @@ Rails.application.configure do
     :user_name => ENV["MANDRILL_USERNAME"],
     :password  => ENV["MANDRILL_PASSWORD"], # SMTP password is any valid API key
     :authentication => 'login', # Mandrill supports 'plain' or 'login'
-    # :domain => 'yourdomain.com', # your domain to identify your server when connecting
+    :domain => 'Mandrill.com', # your domain to identify your server when connecting
   }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
