@@ -13,13 +13,13 @@
     <button type="button" class="btn btn-default" id="found">Found</button>
   </div>
 </div>
-<div>
+<div class="container nearby-reports-list">
   <% @reports.each do |report| %>
-    <div class="report-list-item">
-      <%= image_tag report.photo.url(:thumb) %>
-      <div class="">
+    <div class="nearby-reports-list-item list-group-item list-group-item-info">
+      <%= image_tag report.photo.url(:thumb), :class => "nearby-reports-thumbnail" %>
+      <div class="nearby-reports-text-block">
         <a href="/users/<%=report.user_id %>/reports/<%=report.id%>">
-          <%= report.pet_name %>
+          <h4><%= report.pet_name %></h4>
         </a>(<%= report.report_type %>)<br>
         Pet Type: <%= report.animal_type %><br>
         <span>Created: <%= time_ago_in_words(report.created_at)%> ago </span>
