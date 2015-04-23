@@ -1,11 +1,24 @@
 /*========DESKTOP STYLES========*/
 
 
-/** {
+* {
   border: solid red 1px;
 
 }
-*/
+#chat_history{
+  vertical-align: top;
+  height: 10.0em;
+  overflow-y: scroll;
+}
+
+.navbar {
+    max-width: 1170px; /* width of .container */
+    margin: 0 auto;
+}
+.label.label-info.chatter {
+  margin-right: 10px;
+  margin-top: 5px;
+}
 
 #amber-alert {
   font-size: 2em;
