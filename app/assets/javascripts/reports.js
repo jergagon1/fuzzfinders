@@ -16,7 +16,7 @@ $(document).ready(function(){
   var content;
   function initialize() {
     var mapOptions = {
-      zoom: 13
+      zoom: 9
     };
 
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -71,7 +71,7 @@ $(document).ready(function(){
     var id = $('#report-map').data().id
 
     var reportMapOptions = {
-      zoom: 13,
+      zoom: 9,
       center: new google.maps.LatLng(lat, lng)
     };
 
