@@ -51,23 +51,17 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
 
-    <div>
-      <div id="chat_history"></div>
-    </div>
 
     <% if user_signed_in? %>
-      <div>
-        <div>
+      <div class="container chatter">
+        <div id="chat_history"></div>
+        <form id="fucking-message">
           <input class="span" id="new_message" prompt="New message" type="text"></input>
-          <button class="btn btn-primary" id="send_message">Chat</button>
+          <button class="btn btn-primary" id="send_message">Chat</button></form>
         </div>
+<!--       <div id="chat-text">
+            </div> -->
       </div>
     <% end %>
-
- </div>
-
-  <br>
-  <br>
-
   </body>
 </html>

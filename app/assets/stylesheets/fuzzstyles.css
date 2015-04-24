@@ -1,6 +1,8 @@
 /*========DESKTOP STYLES========*/
 
+
 /*div {
+
   border: solid red 1px;
 }*/
 
@@ -17,6 +19,21 @@ body {
 
 .view-rpt-btn {
   margin: 5px;
+}
+#chat_history{
+  vertical-align: top;
+  height: 4.50em;
+  overflow-y: scroll;
+  /*border: solid 1px black;*/
+}
+
+.navbar {
+    max-width: 1170px; /* width of .container */
+    margin: 0 auto;
+}
+.label.label-info.chatter {
+  margin-right: 10px;
+  margin-top: 5px;
 }
 
 #amber-alert {
