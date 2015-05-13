@@ -45,6 +45,7 @@ body {
 marquee {
   position: fixed;
   top: 0;
+  z-index: 100;
 }
 
 .log-in-reg-nav {
