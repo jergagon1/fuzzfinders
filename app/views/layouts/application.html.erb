@@ -15,8 +15,6 @@
     <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
   </head>
 
-
-
   <body>
     <marquee behavior="scroll" direction="left">
       <div id="amber-alert" data-uri="<%= request.host %>:<%= request.port %>/websocket">
@@ -24,47 +22,47 @@
       </div>
     </marquee>
 
-    <div class="container">
+    <div class="container page-wrapper">
 
       <% if user_signed_in? %>
 
         <div class="container">
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-info btn-orange edit-profile' %>
-        <% if current_page?('/reports') %>
-          <%= link_to 'Home', root_path, :class => 'btn btn-info btn-orange edit-profile home-button' %>
-        <% end %>
-        <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => 'btn btn-info btn-orange log-out'  %>
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-info btn-orange edit-profile' %>
+          <% if current_page?('/reports') %>
+            <%= link_to 'Home', root_path, :class => 'btn btn-info btn-orange edit-profile home-button' %>
+          <% end %>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => 'btn btn-info btn-orange log-out'  %>
         </div>
 
         <div class="logged-in-banner">
-        Logged in as <strong><%= current_user.email %></strong>.
+          Logged in as <strong><%= current_user.email %></strong>.
         </div>
 
       <% else %>
-        <% if current_page?('/users/sign_in') || current_page?('/users/sign_up') || current_page?('/')%>
+        <% if current_page?('/users/sign_in') || current_page?('/users/sign_up') || current_page?('/') %>
         <% else %>
           <%= link_to "Sign Up", new_user_registration_path, :class => 'sign-up-top btn btn-info btn-orange'  %>
           <%= link_to "Log In", new_user_session_path, :class => 'log-in-top btn btn-primary btn-orange'  %>
         <% end %>
       <% end %>
+
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+      <%= yield %>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
 
-
-    <% if user_signed_in? %>
-      <div class="container chatter">
-        <div id="chat_history"></div>
-        <form id="fucking-message">
-          <input class="span" id="new_message" prompt="New message" type="text"></input>
-          <button class="btn btn-primary" id="send_message">Chat</button></form>
+      <% if user_signed_in? %>
+        <div class="container chatter">
+          <div id="chat_history"></div>
+            <form id="fucking-message">
+              <input class="span" id="new_message" prompt="New message" type="text">
+              <button class="btn btn-primary" id="send_message">Chat</button>
+            </form>
+          </div>
         </div>
-<!--       <div id="chat-text">
-            </div> -->
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </body>
 </html>
