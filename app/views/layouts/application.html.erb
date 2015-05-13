@@ -41,8 +41,11 @@
         </div>
 
       <% else %>
-        <%= link_to "Sign Up", new_user_registration_path, :class => 'sign-up-top btn btn-info btn-orange'  %>
-        <%= link_to "Log In", new_user_session_path, :class => 'log-in-top btn btn-primary btn-orange'  %>
+        <% if current_page?('/users/sign_in') || current_page?('/users/sign_up') || current_page?('/')%>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path, :class => 'sign-up-top btn btn-info btn-orange'  %>
+          <%= link_to "Log In", new_user_session_path, :class => 'log-in-top btn btn-primary btn-orange'  %>
+        <% end %>
       <% end %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>

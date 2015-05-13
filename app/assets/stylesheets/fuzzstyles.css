@@ -47,6 +47,11 @@ marquee {
   top: 0;
 }
 
+.log-in-reg-nav {
+  display: block;
+  padding-top: 1em;
+}
+
 .new-report-field {
   margin-top: 15px;
   margin-bottom: 15px;
