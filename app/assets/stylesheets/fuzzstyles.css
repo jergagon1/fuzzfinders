@@ -42,6 +42,11 @@ body {
   width: 100%;
 }
 
+marquee {
+  position: fixed;
+  top: 0;
+}
+
 .new-report-field {
   margin-top: 15px;
   margin-bottom: 15px;
