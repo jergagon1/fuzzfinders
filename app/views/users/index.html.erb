@@ -7,7 +7,7 @@
   </button>
 
   <% if current_user.reports.length == 0 %>
- 
+
     <h4><em>Get wags by helping to find lost pets!</em><h4>
 
     <h3>Report a lost or found pet:<h3>
@@ -39,7 +39,8 @@
     <input class="found-button btn btn-info btn-orange" type="submit" value="I Found a Pet!">
   </form>
 
-  <%= button_to "Nearby Reports", 'reports#index', :method => :get, :class => 'nearby-reports btn btn-info btn-orange' %>
+  <%= link_to "Nearby Reports", reports_path, :method => :get, :class => 'nearby-reports btn btn-info btn-orange' %>
+
 </div>
 
 
